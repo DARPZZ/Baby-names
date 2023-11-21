@@ -3,7 +3,7 @@ import './SignupCSS.css';
 
 function Signup() {
   const [formData, setFormData] = useState({
-    name: '',
+    UserName: '',
     email: '',
     password: ''
   });
@@ -23,13 +23,7 @@ function Signup() {
         const response = await fetch('http://localhost:5000/users', {
           method: 'POST',
           headers: {
-            
-            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa8",
-            "userName": "hiphophej",
-            "Password": "hiphophej",
-            "Email" : "Email"
-            
-            
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify(formData),
         });
@@ -52,8 +46,8 @@ function Signup() {
       <form className="signup-form" onSubmit={handleSubmit}>
         <h2>Signup</h2>
         <div className="form-group">
-          <label htmlFor="name">Name:</label>
-          <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} />
+          <label htmlFor="UserName">Username:</label>
+          <input type="text" id="UserName" name="UserName" value={formData.UserName} onChange={handleChange} />
         </div>
         <div className="form-group">
           <label htmlFor="email">Email:</label>
