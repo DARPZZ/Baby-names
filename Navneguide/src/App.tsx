@@ -4,6 +4,8 @@ import { Link, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import Signup from './components/Signup';
 import Login from './components/Login';
+import Search from './components/Search';
+import Profile from './components/Profile';
 import './App.css';
 
 function App() {
@@ -35,12 +37,25 @@ function App() {
         <Link to="/Login">
           Login
         </Link>
+        <br />
+        <br />
+        <Link to="/Profil">
+          Profil
+        </Link>
+        <br />
+        <br />
+        <Link to="/Search">
+          Search
+        </Link>
       </nav>
 
       <Switch>
         <Route exact path="/home" component={Home} />
         <Route path="/Signup" component={Signup} />
         <Route path="/Login" component={Login} />
+        <Route path="/Profile" component={Profile} />
+        <Route path="/Search" component={Search} />
+        
       </Switch>
     </div>
   );
