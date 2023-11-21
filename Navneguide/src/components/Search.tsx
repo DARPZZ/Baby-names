@@ -1,7 +1,8 @@
 function Search() {
-    return <div>
-        <p>Search</p>
-    </div>
+    return(
+       <h1>hej</h1>
+    )
+
   }
   
   export default Search

@@ -39,8 +39,8 @@ function App() {
         </Link>
         <br />
         <br />
-        <Link to="/Profil">
-          Profil
+        <Link to="/Profile">
+          Profile
         </Link>
         <br />
         <br />
