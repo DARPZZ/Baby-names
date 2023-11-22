@@ -14,8 +14,16 @@
     box-sizing: border-box;
 
   }
-  #checkbox{
-   
+  .checkbox-container {
+    display: flex
   }
+  
+  .checkbox-div {
+    flex: 1;
+  }
+  
+  
+ 
+ 
  
  
