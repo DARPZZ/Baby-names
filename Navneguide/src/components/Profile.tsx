@@ -25,7 +25,7 @@ function Profile() {
         <div className='add-more'>
             <input id='ral' type="text"/>
             <button id='add-button' className='add-button'>
-              Add to List
+              Link youre partner
             </button>
         </div>
       <div className="list-container">

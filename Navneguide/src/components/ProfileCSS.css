@@ -33,11 +33,13 @@
  
 }
 .add-more{
-  width: 20%;
-  bottom: 30%;
-  left: 22%;
+  width: 25%;
+  top: 25%;
+  right: 22%;
   position: relative;
 }
 #add-button{
-  width:94% ;
+  width:90% ;
+  padding: 20px;
+  border-radius: 15px;
 }
