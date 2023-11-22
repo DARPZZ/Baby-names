@@ -3,7 +3,7 @@ import './SignupCSS.css';
 
 function Signup() {
   const [formData, setFormData] = useState({
-    UserName: '',
+    userName: '',
     email: '',
     password: ''
   });
@@ -46,8 +46,8 @@ function Signup() {
       <form className="signup-form" onSubmit={handleSubmit}>
         <h2>Signup</h2>
         <div className="form-group">
-          <label htmlFor="UserName">Username:</label>
-          <input type="text" id="UserName" name="UserName" value={formData.UserName} onChange={handleChange} />
+          <label htmlFor="userName">Username:</label>
+          <input type="text" id="userName" name="userName" value={formData.userName} onChange={handleChange} />
         </div>
         <div className="form-group">
           <label htmlFor="email">Email:</label>

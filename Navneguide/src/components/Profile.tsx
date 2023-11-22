@@ -1,6 +1,9 @@
 import React from 'react';
 import './ProfileCSS.css';
-
+function AddToList()
+{
+  
+}
 function Profile() {
   return ( 
     <div className="profile-container">
@@ -20,7 +23,10 @@ function Profile() {
         </button>
       </form>
         <div className='add-more'>
-            <input type="text"/>
+            <input id='ral' type="text"/>
+            <button id='add-button' className='add-button'>
+              Add to List
+            </button>
         </div>
       <div className="list-container">
         
