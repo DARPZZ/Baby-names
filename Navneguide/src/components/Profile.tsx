@@ -20,24 +20,23 @@ function Profile() {
         </div>
         <button className="submit-button">
           Save
-        </button>
+        </button>  
       </form>
-        <div className='add-more'>
+      <div className="list-container">
+        <ul className="list">
+          <li>List Item 1</li>
+          <li>List Item 2</li>
+          <li>List Item 3</li>
+        </ul>
+      </div>
+      <div className='add-more'>
             <input id='ral' type="text"/>
             <button id='add-button' className='add-button'>
               Link youre partner
             </button>
         </div>
-      <div className="list-container">
-        
-        <ul className="list">
-          <li>List Item 1</li>
-          <li>List Item 2</li>
-          <li>List Item 3</li>
-          
-        </ul>
-      </div>
     </div>
+    
   );
 }
 

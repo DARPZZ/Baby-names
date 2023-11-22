@@ -37,9 +37,19 @@
   top: 25%;
   right: 22%;
   position: relative;
+
 }
-#add-button{
-  width:90% ;
-  padding: 20px;
-  border-radius: 15px;
+.add-more button{
+  position: relative;
+  width: 91%;
+  
 }
+.add-more input {
+  width: 100%; 
+
+}
+
+.add-more button {
+  width: calc(100% - 1px); 
+}
+
