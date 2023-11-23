@@ -47,6 +47,11 @@ function App() {
         <Link to="/Search">
           Search
         </Link>
+        <br />
+        <br />
+        <Link to="/Search">
+          PopularNames
+        </Link>
       </nav>
 
       <Switch>
