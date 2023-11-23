@@ -6,6 +6,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import Search from './components/Search';
 import Profile from './components/Profile';
+import PopularNames from './components/PopularNames';
 import './App.css';
 
 function App() {
@@ -49,7 +50,7 @@ function App() {
         </Link>
         <br />
         <br />
-        <Link to="/Search">
+        <Link to="/PopularNames">
           PopularNames
         </Link>
       </nav>
@@ -60,6 +61,7 @@ function App() {
         <Route path="/Login" component={Login} />
         <Route path="/Profile" component={Profile} />
         <Route path="/Search" component={Search} />
+        <Route path="/PopularNames" component={PopularNames} />
         
       </Switch>
     </div>
