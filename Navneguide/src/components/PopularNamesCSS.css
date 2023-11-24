@@ -1,0 +1,35 @@
+.Popularnames-group {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .popnames-container {
+    display: flex;
+    max-height: 600px;
+    overflow-y: auto;
+  }
+  
+  .popnames,
+  .popnames2,
+  .popnames3 {
+    flex: 1;
+    padding: 20px;
+    font-size: 18px;
+    width: 33.33%; /* tager lige meget plads */
+  }
+  
+  .pop-names-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .small-image {
+    width: 200px;
+    height: auto;
+    align-items: center;
+    text-align-last: center;
+  }
+  

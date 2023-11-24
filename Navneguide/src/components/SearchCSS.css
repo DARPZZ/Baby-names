@@ -28,7 +28,9 @@
     left: 50%;
   }
   
-  
+  .pop-names-list li {
+    margin-bottom: 15px;
+  }
  
  
  
