@@ -10,7 +10,7 @@ const MyForm: React.FC = () => {
     email: '',
     password: '',
   });
-
+  /*Kan nok godt slettes*/
   const [submittedEmail, setSubmittedEmail] = useState<string>('');
   const [userId, setUserId] = useState<string>('');
   const [userDetails, setUserDetails] = useState<any>(null); //save state
@@ -22,7 +22,7 @@ const MyForm: React.FC = () => {
       [name]: value,
     });
   };
-
+/* sprøg om min bruger eksistere */
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 

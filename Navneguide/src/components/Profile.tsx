@@ -1,23 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import './ProfileCSS.css';
 
-interface UserData {
-  names: {
-    name: string;
-    gender: string;
-    isInternational: boolean;
-  }[];
-
-}
-
 function Profile() {
-  const [userData, setUserData] = useState<UserData | null>(null);
+  const [names, setNames] = useState<string[] | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        /**
+         * { henter den local stored email fra local storage}
+         */
+        
         const email = localStorage.getItem('submittedEmail');
-        console.log(email + "   Dette er en test")
+       
         const response = await fetch(`http://localhost:5000/users/email/${email}`, {
           method: 'GET',
           credentials: 'include',
@@ -27,8 +22,8 @@ function Profile() {
         });
 
         if (response.ok) {
-          const data: UserData = await response.json();
-          setUserData(data);
+          const data = await response.json();
+          setNames(data.names);
           
         } else {
           console.error('Failed to fetch data');
@@ -43,7 +38,6 @@ function Profile() {
 
   return (
     <div className="profile-container">
-     
       <form className="profile-form">
         <div className="profile-group">
           <label htmlFor="UserName">Username:</label>
@@ -53,24 +47,25 @@ function Profile() {
           <label htmlFor="email">Email:</label>
           <input type="email" id="email" name="email" />
         </div>
-        <div className="form-group">
-        </div>
-        <button className="submit-button">
-          Save
-        </button>  
+        
+        <button className="submit-button">Save</button>  
       </form>
+
       <div className="list-container">
-      <h1>List</h1>
-        <ul className="list">
-          {userData &&
-            userData.names.map((nameData, index) => (
+        <h1>List of Names</h1>
+        {names && (
+          <ul className="list">
+            {names.map((name, index) => (
               <li key={index}>
-                Name: {nameData.name}, Gender: {nameData.gender}, International: {nameData.isInternational ? 'Yes' : 'No'}
+                {name}
               </li>
             ))}
-        </ul>
+          </ul>
+        )}
       </div>
+
       <div className='add-more'>
+        
         <input id='ral' type="text"/>
         <button id='add-button' className='add-button'>
           Link your partner
