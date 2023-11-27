@@ -19,8 +19,8 @@
   top: 25%;
   right: 0;
   width: 25%;
-  height: 50%; 
-  overflow-y: auto; 
+  height: 50%;
+  overflow-y: auto;
   margin-left: 20px;
 }
 
@@ -32,30 +32,37 @@
 
 .list li {
   margin-bottom: 10px;
-  background-color: #f9f9f9; 
-  padding: 8px; 
-  border-radius: 4px; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  background-color: #f9f9f9;
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.add-more{
+.add-more {
   width: 25%;
   top: 25%;
   right: 22%;
   position: relative;
-
-}
-.add-more button{
-  position: relative;
-  width: 91%;
-  
-}
-.add-more input {
-  width: 100%; 
-
 }
 
 .add-more button {
-  width: calc(100% - 1px); 
+  position: relative;
+  width: 91%;
 }
 
+.add-more input {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  transition: border-color 0.7s ease-in-out; 
+}
+
+.add-more button {
+  width: calc(100% - 1px);
+}
+
+.add-more input.linked-partner {
+  border-color: #42b72a; 
+  box-shadow: 0 0 25px rgba(66, 183, 42, 0.8); 
+}
