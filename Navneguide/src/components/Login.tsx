@@ -51,11 +51,10 @@ const MyForm: React.FC = () => {
           console.log('User Details:', userDetailsData);
           setUserDetails(userDetailsData); // gem i state
           localStorage.setItem('submittedEmail', formData.email);
-          window.location.href = 'Search'
+          window.location.href = 'Profile'
         } else {
           console.error('Error fetching user details');
         }
-        
       } else {
         console.error('Error logging in');
       }
