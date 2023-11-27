@@ -28,8 +28,11 @@ function Signup() {
           body: JSON.stringify(formData),
         });
         if (response.ok) {
+          localStorage.setItem('signUpEmail', formData.email);
+          localStorage.setItem('signUpPassword', formData.password);
           console.log('Data sent successfully!');
           console.log(response);
+          window.location.href = 'Login'
         } else {
           console.error('Error sending data to the server');
           // Handle errors here
