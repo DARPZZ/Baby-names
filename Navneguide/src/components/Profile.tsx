@@ -16,8 +16,11 @@ function Profile() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/users/655dfdd41948c9d6c4343703', {
+        const email = localStorage.getItem('submittedEmail');
+        console.log(email + "   Dette er en test")
+        const response = await fetch(`http://localhost:5000/users/email/${email}`, {
           method: 'GET',
+          credentials: 'include',
           headers: {
             'Content-Type': 'application/json',
           },
@@ -26,6 +29,7 @@ function Profile() {
         if (response.ok) {
           const data: UserData = await response.json();
           setUserData(data);
+          
         } else {
           console.error('Failed to fetch data');
         }

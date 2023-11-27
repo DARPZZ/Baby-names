@@ -1,20 +1,19 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { useHistory } from 'react-router-dom'; // Import useHistory hook
 
 interface FormData {
-  name: string;
   email: string;
-  // Add more fields as needed
+  password: string;
 }
 
 const MyForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
-    name: '',
     email: '',
-    // Initialize other fields as needed
+    password: '',
   });
 
-  const history = useHistory(); // Access the history object
+  const [submittedEmail, setSubmittedEmail] = useState<string>('');
+  const [userId, setUserId] = useState<string>('');
+  const [userDetails, setUserDetails] = useState<any>(null); //save state
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -28,48 +27,55 @@ const MyForm: React.FC = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/todos', {
+      const response = await fetch('http://localhost:5000/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          // Add any additional headers as needed
         },
         body: JSON.stringify(formData),
+        credentials: 'include',
       });
 
       if (response.ok) {
-        console.log('Data sent successfully!');
-        console.log(response);
+        const userId = await response.text();
+        console.log('Login successful! User ID:', userId);
+        setSubmittedEmail(formData.email);
+        setUserId(userId);
+
+        const userDetailsResponse = await fetch(`http://localhost:5000/users/email/${formData.email}`, {
+          credentials: 'include',
+        });
+
+        if (userDetailsResponse.ok) {
+          const userDetailsData = await userDetailsResponse.json();
+          console.log('User Details:', userDetailsData);
+          setUserDetails(userDetailsData); // gem i state
+          localStorage.setItem('submittedEmail', formData.email);
+        } else {
+          console.error('Error fetching user details');
+        }
+        
       } else {
-        console.error('Error sending data to the server');
-        // Handle errors here
+        console.error('Error logging in');
       }
     } catch (error) {
       console.error('Error:', error);
     }
   };
 
- 
-
   return (
     <div className='login'>
       <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input type="text" name="name" value={formData.name} onChange={handleChange} />
-        </label>
+        <label htmlFor="email">Email:</label>
+        <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
         <br />
 
-        <label>
-          Password:
-          <input type="email" name="email" value={formData.email} onChange={handleChange} />
-        </label>
+        <label htmlFor="password">Password:</label>
+        <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} />
         <br />
 
-        {/* Add more fields as needed */}
         <div id='SubmitId'>
           <button className='SubmitId' type="submit">Log on</button>
-        
         </div>
       </form>
     </div>
