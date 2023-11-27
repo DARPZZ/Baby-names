@@ -7,10 +7,6 @@ function Profile() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        /**
-         * { henter den local stored email fra local storage}
-         */
-        
         const email = localStorage.getItem('submittedEmail');
        
         const response = await fetch(`http://localhost:5000/users/email/${email}`, {
@@ -35,6 +31,38 @@ function Profile() {
 
     fetchData();
   }, []);
+
+  const handleAddPartner = async () => {
+    try {
+      const email = localStorage.getItem('submittedEmail');
+      const partnerEmailElement = document.getElementById('ral') as HTMLInputElement | null;
+
+      let partnerEmail: string = '';
+      
+      if (partnerEmailElement !== null) {
+        partnerEmail = partnerEmailElement.value;
+      } else {
+        console.log("Fejl i link")
+      }
+      const response = await fetch(`http://localhost:5000/users/partner/${email}`, {
+        method: 'PATCH',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ Email: partnerEmail }),
+      });
+
+      if (response.ok) {
+        console.log('Partner linked successfully');
+        
+      } else {
+        console.error('Failed to link partner');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
 
   return (
     <div className="profile-container">
@@ -65,9 +93,8 @@ function Profile() {
       </div>
 
       <div className='add-more'>
-        
         <input id='ral' type="text"/>
-        <button id='add-button' className='add-button'>
+        <button id='add-button' className='add-button' onClick={handleAddPartner}>
           Link your partner
         </button>
       </div>
