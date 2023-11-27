@@ -7,11 +7,12 @@ import Login from './components/Login';
 import Search from './components/Search';
 import Profile from './components/Profile';
 import PopularNames from './components/PopularNames';
+import Logud from './components/Logud';
 import './App.css';
 
 function App() {
   const [menuVisible, setMenuVisible] = useState(true); // Set to true by default
-
+  
   const toggleMenu = () => {
     setMenuVisible(!menuVisible);
   };
@@ -25,7 +26,7 @@ function App() {
       
 
       <nav className={`menu ${menuVisible ? 'show' : ''}`}>
-        <Link to="/home" >
+        <Link to="/" >
           Home
         </Link>
         <br />
@@ -53,15 +54,21 @@ function App() {
         <Link to="/PopularNames">
           PopularNames
         </Link>
+        <br />
+        <br />
+        <Link to="/Logud">
+          Logud
+        </Link>
       </nav>
 
       <Switch>
-        <Route exact path="/home" component={Home} />
+        <Route exact path="/" component={Home} />
         <Route path="/Signup" component={Signup} />
         <Route path="/Login" component={Login} />
         <Route path="/Profile" component={Profile} />
         <Route path="/Search" component={Search} />
         <Route path="/PopularNames" component={PopularNames} />
+        <Route path="/Logud" component={Logud} />
         
       </Switch>
     </div>
