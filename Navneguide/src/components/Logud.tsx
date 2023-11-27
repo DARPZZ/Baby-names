@@ -19,25 +19,6 @@ const MyForm: React.FC = () => {
       [name]: value,
     });
   };
-  window.addEventListener('load', Ralle);
-  async function Ralle() {
-    try {
-        const response = await fetch('http://localhost:5000/logout', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-          credentials: 'include',
-        });
-  
-        if (response.ok) {
-          console.log("Du har nu logget ud af prgorammet")
-        }
-      } catch (error) {
-        console.log(error);
-      }
-  }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
