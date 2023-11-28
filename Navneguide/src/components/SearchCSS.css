@@ -7,8 +7,9 @@
   
   .search-form {
     position: relative;
-    right: 33%;
-    width: 30%;
+    right: 10%;
+    bottom: 35%;
+    width: 35%;
     border-radius: 8px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -40,6 +41,10 @@
     font-size: 20px;
     font-family: 'Times New Roman', Times, serif;
     font-weight: 100;
+  }
+  .search-list3{
+    position: relative;
+    right: 20%;
   }
  
  

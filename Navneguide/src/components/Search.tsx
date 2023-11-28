@@ -54,9 +54,12 @@ function Search() {
       </div>
       <div className='search-list2'>
         <h1>Match navne</h1>
-        
         <ul className="list">
-          
+        </ul>
+      </div>
+      <div className='search-list3'>
+        <h1>Egne navne</h1>
+        <ul className="list">
         </ul>
       </div>
       <form className="search-form">
