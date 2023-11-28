@@ -3,10 +3,23 @@ function Search() {
     return(
        <div className="search-container">
          <div className='search-list'>
+          <h1>Partners navne</h1>
          <ul className="list">
           <li>List Item 1</li>
           <li>List Item 2</li>
           <li>List Item 3</li>
+          
+          
+        </ul>
+         </div>
+         <div className='search-list2'>
+          <h1>Match navne</h1>
+         <ul className="list">
+          <li>List Item 1</li>
+          <li>List Item 2</li>
+          <li>List Item 3</li>
+          
+          
           
         </ul>
          </div>
