@@ -4,7 +4,7 @@ import './ProfileCSS.css';
 function Profile() {
   const [names, setNames] = useState<string[] | null>(null);
   const [partnerEmail, setPartnerEmail] = useState<string | null>(null);
-  const [linked, setLinked] = useState<boolean>(false); // bruges til at fyre css event
+  const [linked, setLinked] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,8 +22,12 @@ function Profile() {
         if (response.ok) {
           const data = await response.json();
           setNames(data.names);
-          setPartnerEmail(data.partner); 
-          
+          setPartnerEmail(data.partner);
+
+          // If partner email exists, store it in session storage
+          if (data.partner) {
+            sessionStorage.setItem('partnerEmail', data.partner);
+          }
         } else {
           console.error('Failed to fetch data');
         }
@@ -60,6 +64,8 @@ function Profile() {
         console.log('Partner linked successfully');
         setPartnerEmail(partnerEmail); 
         setLinked(true); // fyre css event
+        
+        sessionStorage.setItem('partnerEmail', partnerEmail); // Store in session storage
 
         // sletter css event efter 2 sec
         setTimeout(() => {
