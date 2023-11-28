@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './SearchCSS.css'; // Import your CSS file
+import './SearchCSS.css'; 
 
 function Search() {
   const [names, setNames] = useState<string[]>([]);
@@ -18,7 +18,7 @@ function Search() {
 
         if (response.ok) {
           const data = await response.json();
-          // Assuming data.names contains an array of names
+         
           setNames(data.names || []);
         } else {
           console.error('Failed to fetch data');
@@ -32,7 +32,7 @@ function Search() {
   }, []);
 
   useEffect(() => {
-    // Retrieve and log namesArray
+    
     const storedNamesArray = sessionStorage.getItem('namesArray');
     const namesArray = storedNamesArray ? JSON.parse(storedNamesArray) : [];
     console.log(namesArray);
