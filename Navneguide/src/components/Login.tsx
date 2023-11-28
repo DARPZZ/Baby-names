@@ -40,6 +40,7 @@ const MyForm: React.FC = () => {
         const userId = await response.text();
         console.log('Login successful! User ID:', userId);
         setSubmittedEmail(formData.email);
+        sessionStorage.setItem('loggedIn', 'true');
         setUserId(userId);
 
         const userDetailsResponse = await fetch(`http://localhost:5000/users/email/${formData.email}`, {

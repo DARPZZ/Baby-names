@@ -33,6 +33,7 @@ const MyForm: React.FC = () => {
       });
 
       if (response.ok) {
+        sessionStorage.removeItem('loggedIn');
         console.log("Du har nu logget ud af prgorammet")
         window.location.href = '/'
       }
