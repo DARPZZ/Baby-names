@@ -42,6 +42,7 @@ function Search() {
 
   return (
     <div className="search-container">
+      
       <div className='search-list'>
           <h1>Partners navne</h1>
           <div className='search-list-text'>
