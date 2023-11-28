@@ -3,8 +3,6 @@ import './SearchCSS.css'; // Import your CSS file
 
 function Search() {
   const [names, setNames] = useState<string[]>([]);
-  const [partnerEmail, setPartnerEmail] = useState<string | null>(null);
-  const [linked, setLinked] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,15 +31,26 @@ function Search() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    // Retrieve and log namesArray
+    const storedNamesArray = sessionStorage.getItem('namesArray');
+    const namesArray = storedNamesArray ? JSON.parse(storedNamesArray) : [];
+    console.log(namesArray);
+  }, []);
+
+  
+
   return (
     <div className="search-container">
       <div className='search-list'>
-        <h1>Partners navne</h1>
-        <ul className="pop-names-list">
-          {names.map((name, index) => (
-            <li key={index}>{name}</li>
-          ))}
-        </ul>
+          <h1>Partners navne</h1>
+          <div className='search-list-text'>
+          <ul className="pop-names-list">
+            {names.map((name, index) => (
+              <li key={index}>{name}</li>
+            ))}
+          </ul>
+          </div>
       </div>
       <div className='search-list2'>
         <h1>Match navne</h1>

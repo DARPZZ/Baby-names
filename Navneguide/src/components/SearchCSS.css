@@ -26,6 +26,7 @@
   .search-list{
     position: relative;
     left: 50%;
+    
   }
   
   .pop-names-list li {
@@ -34,6 +35,11 @@
   .search-list2{
     position: relative;
     left: 15%;
+  }
+  .search-list-text{
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 100;
   }
  
  
