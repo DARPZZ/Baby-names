@@ -38,7 +38,7 @@ const MyForm: React.FC = () => {
 
       if (response.ok) {
         const userId = await response.text();
-        console.log('Login successful! User ID:', userId);
+       
         setSubmittedEmail(formData.email);
         sessionStorage.setItem('loggedIn', 'true');
         setUserId(userId);
@@ -49,7 +49,7 @@ const MyForm: React.FC = () => {
 
         if (userDetailsResponse.ok) {
           const userDetailsData = await userDetailsResponse.json();
-          console.log('User Details:', userDetailsData);
+       
           setUserDetails(userDetailsData); // gem i state
           localStorage.setItem('submittedEmail', formData.email);
           window.location.href = 'Profile'

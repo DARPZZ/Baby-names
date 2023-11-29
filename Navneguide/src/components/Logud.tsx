@@ -35,7 +35,7 @@ const MyForm: React.FC = () => {
       if (response.ok) {
         sessionStorage.removeItem('loggedIn');
         localStorage.removeItem('partnerEmail');
-        console.log("Du har nu logget ud af prgorammet")
+        
         window.location.href = '/'
       }
     } catch (error) {

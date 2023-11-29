@@ -71,7 +71,6 @@ function Search() {
             <tr>
               <td>
                 <ul className="list">
-                  
                 </ul>
               </td>
             </tr>
