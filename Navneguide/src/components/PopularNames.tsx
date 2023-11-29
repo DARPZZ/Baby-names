@@ -46,8 +46,7 @@ function PopularNames() {
               gender = 'Female';
             }
           }
-        const hest=  sessionStorage.getItem('partnerEmail');
-        console.log(hest)
+        
           nameList.push({ name, population, gender });
         });
 

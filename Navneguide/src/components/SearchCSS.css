@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 75vh;
+    font-family: 'Times New Roman', Times, serif;
   }
   
   .search-form {
@@ -32,20 +33,28 @@
   
   .pop-names-list li {
     margin-bottom: 15px;
+    font-size: 18px;
+    
+    
   }
   .search-list2{
     position: relative;
     left: 15%;
+    font-size: 18px;
+   
   }
   .search-list-text{
     font-size: 20px;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: 100;
+    font-size: 18px;
+    
   }
   .search-list3{
     position: relative;
     right: 20%;
+    font-size: 18px;
+    
   }
+
  
  
  

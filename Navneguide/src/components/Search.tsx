@@ -3,6 +3,7 @@ import './SearchCSS.css';
 
 function Search() {
   const [names, setNames] = useState<string[]>([]);
+  const [namesArray, setNamesArray] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,40 +32,73 @@ function Search() {
     fetchData();
   }, []);
 
+ 
   useEffect(() => {
-    
     const storedNamesArray = sessionStorage.getItem('namesArray');
-    const namesArray = storedNamesArray ? JSON.parse(storedNamesArray) : [];
-    console.log(namesArray);
+    const parsedNamesArray = storedNamesArray ? JSON.parse(storedNamesArray) : [];
+    setNamesArray(parsedNamesArray);
   }, []);
-
-  
-
   return (
     <div className="search-container">
-      
       <div className='search-list'>
-          <h1>Partners navne</h1>
-          <div className='search-list-text'>
-          <ul className="pop-names-list">
-            {names.map((name, index) => (
-              <li key={index}>{name}</li>
-            ))}
-          </ul>
-          </div>
+        <table className="search-list">
+          <thead>
+            <tr>
+              <th>Partners name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <ul className="pop-names-list">
+                  {names.map((name, index) => (
+                    <li key={index}>{name}</li>
+                  ))}
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div className='search-list2'>
-        <h1>Match navne</h1>
-        <ul className="list">
-        </ul>
+        <table className="search-list2">
+          <thead>
+            <tr>
+              <th>Match Names</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <ul className="list">
+                  
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div className='search-list3'>
-        <h1>Egne navne</h1>
-        <ul className="list">
-        </ul>
+        <table className="search-list3">
+          <thead>
+            <tr>
+              <th>Own Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <ul className="list">
+                  {namesArray.map((name, index) => (
+                    <li key={index}>{name}</li>
+                  ))}
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <form className="search-form">
-        
         <div className="search-group">
           <label>Search:</label>
           <input type="text" />
