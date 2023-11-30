@@ -6,7 +6,6 @@ function Profile() {
   const [partnerEmail, setPartnerEmail] = useState<string | null>(null);
   const [linked, setLinked] = useState<boolean>(false);
   const namesList = document.querySelectorAll('.list-container .list li');
-  
   const namesArray = Array.from(namesList).map(li => li.textContent);
   sessionStorage.setItem('namesArray', JSON.stringify(namesArray));
 
@@ -27,8 +26,6 @@ function Profile() {
           const data = await response.json();
           setNames(data.names);
           setPartnerEmail(data.partner);
-
-          
           if (data.partner) {
             sessionStorage.setItem('partnerEmail', data.partner);
           }

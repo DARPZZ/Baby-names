@@ -8,9 +8,9 @@
   
   .search-form {
     position: relative;
-    right: 10%;
+    right: 30%;
     bottom: 35%;
-    width: 35%;
+    width: 60%;
     border-radius: 8px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -25,11 +25,7 @@
   .checkbox-div {
     flex: 1;
   }
-  .search-list{
-    position: relative;
-    left: 50%;
-    
-  }
+
   
   .pop-names-list li {
     margin-bottom: 15px;
@@ -37,24 +33,24 @@
     
     
   }
-  .search-list2{
-    position: relative;
-    left: 15%;
-    font-size: 18px;
-   
-  }
+  
   .search-list-text{
-    font-size: 20px;
+   
     font-size: 18px;
     
   }
   .search-list3{
     position: relative;
-    right: 20%;
+    left:8%;
     font-size: 18px;
+    width: 125%;
     
   }
-
+  table {
+    border-spacing: 200px; 
+  }
+  
+  
  
  
  

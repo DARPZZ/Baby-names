@@ -4,6 +4,7 @@ import './SearchCSS.css';
 function Search() {
   const [names, setNames] = useState<string[]>([]);
   const [namesArray, setNamesArray] = useState<string[]>([]);
+  const [matchNavne, setmatchNavne] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,61 +39,46 @@ function Search() {
     const parsedNamesArray = storedNamesArray ? JSON.parse(storedNamesArray) : [];
     setNamesArray(parsedNamesArray);
   }, []);
+
+
+  useEffect(() => {
+  
+    const newMatchingNavne = names.filter(name => namesArray.includes(name));
+    setmatchNavne(newMatchingNavne);
+  }, [names, namesArray]);
+
   return (
     <div className="search-container">
-      <div className='search-list'>
-        <table className="search-list">
-          <thead>
-            <tr>
-              <th>Partners name</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <ul className="pop-names-list">
-                  {names.map((name, index) => (
-                    <li key={index}>{name}</li>
-                  ))}
-                </ul>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div className='search-list2'>
-        <table className="search-list2">
-          <thead>
-            <tr>
-              <th>Match Names</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <ul className="list">
-                </ul>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
       <div className='search-list3'>
         <table className="search-list3">
-          <thead>
-            <tr>
-              <th>Own Name</th>
-            </tr>
-          </thead>
+          
           <tbody>
-            <tr>
-              <td>
+          <tr>
+             <td>
+             <h5>Egne navne</h5>
                 <ul className="list">
                   {namesArray.map((name, index) => (
                     <li key={index}>{name}</li>
                   ))}
                 </ul>
               </td>
+              <td>
+                <h5>Match navne</h5>
+                <ul className="list">
+                {matchNavne.map((name, index) => (
+                    <li key={index}>{name}</li>
+                  ))}
+                </ul>
+              </td>
+              <td>
+              <h5>Partner navne</h5>
+                <ul className="pop-names-list">
+                  {names.map((name, index) => (
+                    <li key={index}>{name}</li>
+                  ))}
+                </ul>
+              </td>
+              
             </tr>
           </tbody>
         </table>
