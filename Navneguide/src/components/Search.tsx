@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './SearchCSS.css'; 
 
 function Search() {
+  const [names2, setNames2] = useState<string[]>([]);
   const [names, setNames] = useState<string[]>([]);
   const [namesArray, setNamesArray] = useState<string[]>([]);
   const [matchNavne, setmatchNavne] = useState<string[]>([]);
+  //const [allNamesArray, setAllNamesArray] = useState<string[]>([]);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +23,6 @@ function Search() {
 
         if (response.ok) {
           const data = await response.json();
-         
           setNames(data.names || []);
         } else {
           console.error('Failed to fetch data');
@@ -33,6 +35,33 @@ function Search() {
     fetchData();
   }, []);
 
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        
+        const response = await fetch(`http://localhost:5000/names/all`, {
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data)
+        
+        } else {
+          console.error('Failed to fetch data');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+    fetchData();
+  }, []);
  
   useEffect(() => {
     const storedNamesArray = sessionStorage.getItem('namesArray');
@@ -46,6 +75,8 @@ function Search() {
     const newMatchingNavne = names.filter(name => namesArray.includes(name));
     setmatchNavne(newMatchingNavne);
   }, [names, namesArray]);
+
+  
 
   return (
     <div className="search-container">

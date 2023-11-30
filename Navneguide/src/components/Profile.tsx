@@ -5,6 +5,7 @@ function Profile() {
   const [names, setNames] = useState<string[] | null>(null);
   const [partnerEmail, setPartnerEmail] = useState<string | null>(null);
   const [linked, setLinked] = useState<boolean>(false);
+  
   const namesList = document.querySelectorAll('.list-container .list li');
   const namesArray = Array.from(namesList).map(li => li.textContent);
   sessionStorage.setItem('namesArray', JSON.stringify(namesArray));
@@ -39,6 +40,8 @@ function Profile() {
 
     fetchData();
   }, []);
+
+
 
   const handleAddPartner = async () => {
     try {
