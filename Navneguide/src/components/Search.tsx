@@ -78,8 +78,7 @@ function Search() {
                   ))}
                 </ul>
               </td>
-              
-            </tr>
+            </tr> 
           </tbody>
         </table>
       </div>
