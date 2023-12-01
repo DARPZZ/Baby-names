@@ -6,7 +6,7 @@ function Search() {
   const [names, setNames] = useState<string[]>([]);
   const [namesArray, setNamesArray] = useState<string[]>([]);
   const [matchNavne, setmatchNavne] = useState<string[]>([]);
-  
+  const [modificeeredeNavne, setmodificeeredeNavne] = useState<string[]>([]);
  
 
 
@@ -76,12 +76,15 @@ function Search() {
   
     const newMatchingNavne = names.filter(name => namesArray.includes(name));
     setmatchNavne(newMatchingNavne);
+    setmodificeeredeNavne(newMatchingNavne);
    
   
   }, [names, namesArray]);
+
   function filterNames() {
     const newMatchingNavne = names.filter(name => namesArray.includes(name));
     setmatchNavne(newMatchingNavne);
+    setmodificeeredeNavne(newMatchingNavne);
   }
   
   
@@ -91,82 +94,79 @@ function Search() {
   let internationalCheck = document.getElementById("internationalCheckbox") as HTMLInputElement
   let apiCall ="http://localhost:5000/names/";
 
-  function getDiffrentApi(mode : string, firstEndPoint : string)
-  {
-    
+  let boysNames : string[] = [];
+  let girlsNames : string[] = [];
 
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${apiCall}${mode}/${firstEndPoint}`, {
-          method: 'GET',
-          credentials: 'include',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+function getDiffrentApi(mode : string, firstEndPoint : string)
+{
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`${apiCall}${mode}/${firstEndPoint}`, {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        let newMatchNavne: string[] = [];
+        data.forEach((item: any) => {
+          if (matchNavne.includes(item.name)) { 
+            newMatchNavne.push(item.name);
+            
+          }
         });
-    
-        if (response.ok) {
-          const data = await response.json();
-          let newMatchNavne: string[] = [];
-          data.forEach((item: any) => {
-            if (matchNavne.includes(item.name)) { 
-              
-              newMatchNavne.push(item.name);
-              console.log(item.name);
-            }
-          });
-          setmatchNavne(newMatchNavne); 
-        } else {
-          console.error('Failed to fetch data');
+        if (firstEndPoint === "boy") {
+          boysNames = [...newMatchNavne];
+        } else if (firstEndPoint === "girl") {
+          girlsNames = [...newMatchNavne];
         }
-      } catch (error) {
-        console.error('Error:', error);
+        if (mandCheck.checked && kvindCheck.checked) {
+          setmodificeeredeNavne ([...boysNames, ...girlsNames]) ;
+        }else
+        {
+          setmodificeeredeNavne( [...newMatchNavne]) ;
+        }
+        console.log(modificeeredeNavne + " modified navne")
+      } else {
+        console.error('Failed to fetch data');
       }
-    };
-    setmatchNavne([]);
-    fetchData();
-    
-  }
-    
-  function remove()
-  {
-    
-  }
-
-
-  function handleChange ()
-  {
-   let gen = "gender"
-   let inter = "international"
- 
- 
-    if(mandCheck.checked)
-    {
-      
-      getDiffrentApi(gen,"boy");
-      
-      
-    }else{
-      filterNames()
+    } catch (error) {
+      console.error('Error:', error);
     }
-     if(kvindCheck.checked)
-    {
-      getDiffrentApi(gen,"girl");
-    }
+  };
+  fetchData();
+}
 
 
-    
-    //  if(unisexCheck.checked)
-    // {
-    //   getDiffrentApi(gen,"uni");
-    // }
-    // if(internationalCheck.checked)
-    // {
-    //   getDiffrentApi(inter,"true");
-    // }
 
-    
+function handleChange ()
+{
+  let gen = "gender"
+  let inter = "international"
+  if(!mandCheck.checked && !kvindCheck.checked)
+  {
+    filterNames()
   }
+  if(mandCheck.checked && kvindCheck.checked)
+  {
+    Promise.all([getDiffrentApi(gen,"boy"), getDiffrentApi(gen,"girl",)]).then(() => {
+      setmodificeeredeNavne(boysNames.concat(girlsNames));
+    });
+  }
+   if(kvindCheck.checked && !mandCheck.checked)
+  {
+    getDiffrentApi(gen,"girl");
+  }
+  if(mandCheck.checked && !kvindCheck.checked)
+  {
+    getDiffrentApi(gen,"boy");
+  }
+  
+}
+
  
   return (
     <div className="search-container">
@@ -186,7 +186,7 @@ function Search() {
               <td>
                 <h5>Match navne</h5>
                 <ul className="list">
-                {matchNavne.map((name, index) => (
+                {modificeeredeNavne.map((name, index) => (
                     <li key={index}>{name}</li>
                   ))}
                 </ul>
