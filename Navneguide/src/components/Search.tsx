@@ -97,75 +97,96 @@ function Search() {
   let boysNames : string[] = [];
   let girlsNames : string[] = [];
 
-function getDiffrentApi(mode : string, firstEndPoint : string)
-{
-  const fetchData = async () => {
-    try {
-      const response = await fetch(`${apiCall}${mode}/${firstEndPoint}`, {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+  let unisexNames : string[] = [];
 
-      if (response.ok) {
-        const data = await response.json();
-        let newMatchNavne: string[] = [];
-        data.forEach((item: any) => {
-          if (matchNavne.includes(item.name)) { 
-            newMatchNavne.push(item.name);
-            
-          }
+  function getDiffrentApi(mode : string, firstEndPoint : string)
+  {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${apiCall}${mode}/${firstEndPoint}`, {
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+          },
         });
-        if (firstEndPoint === "boy") {
-          boysNames = [...newMatchNavne];
-        } else if (firstEndPoint === "girl") {
-          girlsNames = [...newMatchNavne];
+  
+        if (response.ok) {
+          const data = await response.json();
+          let newMatchNavne: string[] = [];
+          data.forEach((item: any) => {
+            if (matchNavne.includes(item.name)) { 
+              newMatchNavne.push(item.name);
+              
+            }
+          });
+          if (firstEndPoint === "boy") {
+            boysNames = [...newMatchNavne];
+          } else if (firstEndPoint === "girl") {
+            girlsNames = [...newMatchNavne];
+          } else if (firstEndPoint === "uni") {
+            unisexNames = [...newMatchNavne];
+          }
+          if (mandCheck.checked && kvindCheck.checked) {
+            setmodificeeredeNavne ([...boysNames, ...girlsNames]) ;
+          } else if (mandCheck.checked && unisexCheck.checked) {
+            setmodificeeredeNavne ([...boysNames, ...unisexNames]) ;
+          } else {
+            setmodificeeredeNavne( [...newMatchNavne]) ;
+          }
+          console.log(modificeeredeNavne + " modified navne")
+        } else {
+          console.error('Failed to fetch data');
         }
-        if (mandCheck.checked && kvindCheck.checked) {
-          setmodificeeredeNavne ([...boysNames, ...girlsNames]) ;
-        }else
-        {
-          setmodificeeredeNavne( [...newMatchNavne]) ;
-        }
-        console.log(modificeeredeNavne + " modified navne")
-      } else {
-        console.error('Failed to fetch data');
+      } catch (error) {
+        console.error('Error:', error);
       }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
-  fetchData();
-}
-
-
-
-function handleChange ()
-{
+    };
+    fetchData();
+  }
   let gen = "gender"
-  let inter = "international"
-  if(!mandCheck.checked && !kvindCheck.checked)
+    let inter = "international"
+  function handleChange ()
   {
-    filterNames()
-  }
-  if(mandCheck.checked && kvindCheck.checked)
-  {
-    Promise.all([getDiffrentApi(gen,"boy"), getDiffrentApi(gen,"girl",)]).then(() => {
-      setmodificeeredeNavne(boysNames.concat(girlsNames));
-    });
-  }
-   if(kvindCheck.checked && !mandCheck.checked)
-  {
-    getDiffrentApi(gen,"girl");
-  }
-  if(mandCheck.checked && !kvindCheck.checked)
-  {
-    getDiffrentApi(gen,"boy");
+    
+    if(!mandCheck.checked && !kvindCheck.checked && !unisexCheck.checked)
+    {
+      filterNames()
+    }
+    if(mandCheck.checked && kvindCheck.checked)
+    {
+      Promise.all([getDiffrentApi(gen,"boy"), getDiffrentApi(gen,"girl",)]).then(() => {
+        setmodificeeredeNavne(boysNames.concat(girlsNames));
+      });
+    }
+    if(kvindCheck.checked && !mandCheck.checked)
+    {
+      getDiffrentApi(gen,"girl");
+    }
+    if(mandCheck.checked && !kvindCheck.checked)
+    {
+      getDiffrentApi(gen,"boy");
+    }
+    
+    handleUnisex();
+   
   }
   
-}
+
+  function handleUnisex()
+  {
+    if(unisexCheck.checked){
+
+      getDiffrentApi(gen,"uni");
+    }
+    if(mandCheck.checked && unisexCheck.checked)
+    {
+      Promise.all([getDiffrentApi(gen,"boy"), getDiffrentApi(gen,"uni",)]).then(() => {
+        setmodificeeredeNavne(boysNames.concat(unisexNames));
+      });
+    }
+  }
+  
 
  
   return (
