@@ -71,13 +71,11 @@ function Search() {
     const parsedNamesArray = storedNamesArray ? JSON.parse(storedNamesArray) : [];
     setNamesArray(parsedNamesArray);
   }, []);
-  useEffect(() => {
-  
+
+  function filterNames() {
     const newMatchingNavne = names.filter(name => namesArray.includes(name));
     setmatchNavne(newMatchingNavne);
-   
-  
-  }, [names, namesArray]);
+  }
  
   
   
@@ -93,7 +91,6 @@ function Search() {
 
     const fetchData = async () => {
       try {
-        
         const response = await fetch(`${apiCall}${mode}/${firstEndPoint}`, {
           method: 'GET',
           credentials: 'include',
@@ -101,19 +98,18 @@ function Search() {
             'Content-Type': 'application/json',
           },
         });
-
+    
         if (response.ok) {
           const data = await response.json();
-          let newMatchNavne = [...matchNavne]; // Create a copy of the current state
+          let newMatchNavne: string[] = [];
           data.forEach((item: any) => {
-            if (newMatchNavne.includes(item.name)) {
-              // Push the new name into the new array
+            if (namesArray.includes(item.name)) { 
+              
               newMatchNavne.push(item.name);
               console.log(item.name);
             }
           });
-          setmatchNavne(newMatchNavne); // Update the state
-          
+          setmatchNavne(newMatchNavne); 
         } else {
           console.error('Failed to fetch data');
         }
@@ -122,8 +118,10 @@ function Search() {
       }
     };
     setmatchNavne([]);
-    fetchData();      
+    fetchData();
+    
   }
+    
   function remove()
   {
     
@@ -142,6 +140,8 @@ function Search() {
       getDiffrentApi(gen,"boy");
       
       
+    }else{
+      filterNames();
     }
      if(kvindCheck.checked)
     {
