@@ -72,11 +72,17 @@ function Search() {
     setNamesArray(parsedNamesArray);
   }, []);
 
+  useEffect(() => {
+  
+    const newMatchingNavne = names.filter(name => namesArray.includes(name));
+    setmatchNavne(newMatchingNavne);
+   
+  
+  }, [names, namesArray]);
   function filterNames() {
     const newMatchingNavne = names.filter(name => namesArray.includes(name));
     setmatchNavne(newMatchingNavne);
   }
- 
   
   
   let mandCheck = document.getElementById("mandCheckbox") as HTMLInputElement
@@ -103,7 +109,7 @@ function Search() {
           const data = await response.json();
           let newMatchNavne: string[] = [];
           data.forEach((item: any) => {
-            if (namesArray.includes(item.name)) { 
+            if (matchNavne.includes(item.name)) { 
               
               newMatchNavne.push(item.name);
               console.log(item.name);
@@ -141,7 +147,7 @@ function Search() {
       
       
     }else{
-      filterNames();
+      filterNames()
     }
      if(kvindCheck.checked)
     {
