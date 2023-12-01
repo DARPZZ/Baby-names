@@ -163,15 +163,18 @@ function Search() {
     {
       getDiffrentApi(gen,"girl");
     }
+   
+    handleMan();
+    handleUnisex();
+   
+  }
+  function handleMan()
+  {
     if(mandCheck.checked && !kvindCheck.checked)
     {
       getDiffrentApi(gen,"boy");
     }
-    
-    handleUnisex();
-   
   }
-  
 
   function handleUnisex()
   {
