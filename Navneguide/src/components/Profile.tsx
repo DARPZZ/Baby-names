@@ -61,7 +61,7 @@ function Profile() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ Email: partnerEmail }),
+        body: JSON.stringify({ email: partnerEmail }),
       });
 
       if (response.ok) {
