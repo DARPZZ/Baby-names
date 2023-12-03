@@ -96,9 +96,8 @@ function Search() {
 
   let boysNames : string[] = [];
   let girlsNames : string[] = [];
-
   let unisexNames : string[] = [];
-
+  let internationalNames : string[] = [];
   async function getDiffrentApi(mode : string, firstEndPoint : string)
   {
     const fetchData = async () => {
@@ -120,14 +119,25 @@ function Search() {
               
             }
           });
-          if (firstEndPoint === "boy") {
-            boysNames = [...newMatchNavne];
-          } else if (firstEndPoint === "girl") {
-            girlsNames = [...newMatchNavne];
-          } else if (firstEndPoint === "uni") {
-            unisexNames = [...newMatchNavne];
+          switch (firstEndPoint) {
+            case "boy":
+              boysNames = [...newMatchNavne];
+              break;
+            case "girl":
+              girlsNames = [...newMatchNavne];
+              break;
+            case "uni":
+              unisexNames = [...newMatchNavne];
+              break;
+              
+            default:
+              break;
           }
-          setmodificeeredeNavne([...boysNames, ...girlsNames, ...unisexNames]);
+          if(mode === "international")
+          {
+            internationalNames = [...newMatchNavne];
+          }
+          setmodificeeredeNavne([...boysNames, ...girlsNames, ...unisexNames,...internationalNames]);
           console.log(modificeeredeNavne + " modified navne")
         } else {
           console.error('Failed to fetch data');
@@ -155,11 +165,27 @@ function Search() {
       if (unisexCheck.checked) {
         promises.push(getDiffrentApi(gen, "uni"));
       }
+      if(internationalCheck.checked)
+      {
+        promises.push(getDiffrentApi(inter,"true"));
+      }
       Promise.all(promises).then(() => {
-        setmodificeeredeNavne(boysNames.concat(girlsNames, unisexNames));
+        setmodificeeredeNavne(boysNames.concat(girlsNames, unisexNames,internationalNames));
         filterNames();
       });
     }
+    function handleSearch() {
+      let inputElement = document.getElementById("search-input") as HTMLInputElement;
+      let inputVærdi = inputElement.value;
+      if (modificeeredeNavne.includes(inputVærdi)) {
+       
+        setmodificeeredeNavne([inputVærdi]);
+      }else if (inputVærdi === ""){
+        handleChange();
+      } 
+    }   
+  
+  
   
 
  
@@ -201,7 +227,7 @@ function Search() {
       <form className="search-form">
         <div className="search-group">
           <label>Search:</label>
-          <input type="text" />
+          <input onChange={handleSearch} id='search-input' type="text" />
           <div className="checkbox-container">
             <div className="checkbox-div">
               <label>

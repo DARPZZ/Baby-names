@@ -12,6 +12,11 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   box-sizing: border-box;
+  transition: transform 0.3s ease-in-out; 
+}
+
+.profile-form:hover {
+  transform: scale(1.05);
 }
 
 .list-container {
@@ -22,6 +27,7 @@
   height: 50%;
   overflow-y: auto;
   margin-left: 20px;
+  border-left: 1px solid #ddd; 
 }
 
 .list {
@@ -36,6 +42,11 @@
   padding: 8px;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.list li:hover {
+  background-color: #e9e9e9;
 }
 
 .add-more {
@@ -48,6 +59,15 @@
 .add-more button {
   position: relative;
   width: 91%;
+  background-color: #42b72a;
+  color: #fff; 
+  border: none; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease-in-out; 
+}
+
+.add-more button:hover {
+  background-color: #36a420; 
 }
 
 .add-more input {
@@ -65,4 +85,19 @@
 .add-more input.linked-partner {
   border-color: #42b72a; 
   box-shadow: 0 0 25px rgba(66, 183, 42, 0.8); 
+}
+.list-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.list-container::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+.list-container::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+.list-container::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }

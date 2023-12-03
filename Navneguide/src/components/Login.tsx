@@ -10,7 +10,7 @@ const MyForm: React.FC = () => {
     email: '',
     password: '',
   });
-  /*Kan nok godt slettes*/
+ 
   const [submittedEmail, setSubmittedEmail] = useState<string>('');
   const [userId, setUserId] = useState<string>('');
   const [userDetails, setUserDetails] = useState<any>(null); //save state
@@ -53,11 +53,7 @@ const MyForm: React.FC = () => {
           setUserDetails(userDetailsData); // gem i state
           localStorage.setItem('submittedEmail', formData.email);
           window.location.href = 'Profile'
-        } else {
-          console.error('Error fetching user details');
         }
-      } else {
-        console.error('Error logging in');
       }
     } catch (error) {
       console.error('Error:', error);
