@@ -5,7 +5,7 @@ function Profile() {
   const [names, setNames] = useState<string[] | null>(null);
   const [partnerEmail, setPartnerEmail] = useState<string | null>(null);
   const [linked, setLinked] = useState<boolean>(false);
-  const [allNames, setAllNames] = useState<string[] | null>(null);
+  const [allNames, setAllNames] = useState<string[]>([]);
   const namesList = document.querySelectorAll('.list-container .list li');
   const namesArray = Array.from(namesList).map(li => li.textContent);
   sessionStorage.setItem('namesArray', JSON.stringify(namesArray));
@@ -45,31 +45,34 @@ function Profile() {
   
   }
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`http://localhost:5000/names/all`, {
-          method: 'GET',
-          credentials: 'include',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+  async function fetchDataAndSetNames() {
+    try {
+      const response = await fetch(`http://localhost:5000/names/all`, {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
   
-        if (response.ok) {
-          const data: NameObject[] = await response.json();
-          const namesArray = data.map(item => item.name);
-          setAllNames(namesArray);
-          console.log(allNames);
-        } else {
-          console.error('Failed to fetch data');
-        }
-      } catch (error) {
-        console.error('Error:', error);
+      if (response.ok) {
+        const data: NameObject[] = await response.json();
+        const namesArray = data.map(item => item.name);
+        setAllNames(namesArray);
+        console.log(allNames);
+      } else {
+        console.error('Failed to fetch data');
       }
-    };
-    fetchData();
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+  
+  // Fetch data when the page loads
+  useEffect(() => {
+    fetchDataAndSetNames();
   }, []);
+  
   
   async function addToOwnList( name : string) {
     const email = localStorage.getItem('submittedEmail');
@@ -81,10 +84,11 @@ function Profile() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name }), // Pass the name in the body
+        body: JSON.stringify({ name }),
       });
   
       if (response.ok) {
+        
         console.log('Name added successfully');
       } else {
         console.error('Failed to fetch data');
@@ -133,6 +137,17 @@ function Profile() {
     }
   };
 
+    function handleSearch() {
+      let inputElement = document.getElementById("seach-input") as HTMLInputElement;
+      let inputVærdi = inputElement.value;
+      if (allNames.includes(inputVærdi)) {
+        setAllNames([inputVærdi]);
+      }else if (inputVærdi === ""){
+       fetchDataAndSetNames();
+      } 
+    }   
+ 
+
   return (
     <div className="profile-container">
       <form className="profile-form">
@@ -144,9 +159,13 @@ function Profile() {
           <label htmlFor="email">Email:</label>
           <input type="email" id="email" name="email" />
         </div>
-        
         <button className="submit-button">Save</button>  
       </form>
+
+      <div className='add-to-list'>
+        <h5>Search:</h5>
+        <input id='seach-input'  type="text" onChange={handleSearch} />
+      </div>
 
       <div className="list-container2">
   <h1>List of all Names</h1>

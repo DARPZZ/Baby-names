@@ -111,3 +111,9 @@
 .list-container::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
+.add-to-list{
+  position: relative;
+  bottom: 40%;
+  LEFT: 20%;
+  text-align: center;
+}
