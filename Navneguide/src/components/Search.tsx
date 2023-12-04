@@ -82,98 +82,98 @@ function Search() {
   }, [names, namesArray]);
 
   function filterNames() {
+    
     const newMatchingNavne = names.filter(name => namesArray.includes(name));
     setmatchNavne(newMatchingNavne);
     setmodificeeredeNavne(newMatchingNavne);
+    
+    
   }
   
-  
-  let mandCheck = document.getElementById("mandCheckbox") as HTMLInputElement
-  let kvindCheck = document.getElementById("kvindeCheckbox") as HTMLInputElement
-  let unisexCheck = document.getElementById("unisexCheckbox") as HTMLInputElement
-  let internationalCheck = document.getElementById("internationalCheckbox") as HTMLInputElement
-  let apiCall ="http://localhost:5000/names/";
+let mandCheck = document.getElementById("mandCheckbox") as HTMLInputElement;
+let kvindCheck = document.getElementById("kvindeCheckbox") as HTMLInputElement;
+let unisexCheck = document.getElementById("unisexCheckbox") as HTMLInputElement;
+let internationalCheck = document.getElementById("internationalCheckbox") as HTMLInputElement;
+let apiCall ="http://localhost:5000/names/";
 
-  let boysNames : string[] = [];
-  let girlsNames : string[] = [];
-  let unisexNames : string[] = [];
-  let internationalNames : string[] = [];
-  async function getDiffrentApi(mode : string, firstEndPoint : string)
-  {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${apiCall}${mode}/${firstEndPoint}`, {
-          method: 'GET',
-          credentials: 'include',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-  
-        if (response.ok) {
-          const data = await response.json();
-          let newMatchNavne: string[] = [];
-          data.forEach((item: any) => {
-            if (matchNavne.includes(item.name)) { 
-              newMatchNavne.push(item.name);
-              
-            }
-          });
-          switch (firstEndPoint) {
-            case "boy":
-              boysNames = [...newMatchNavne];
-              break;
-            case "girl":
-              girlsNames = [...newMatchNavne];
-              break;
-            case "uni":
-              unisexNames = [...newMatchNavne];
-              break;
-              
-            default:
-              break;
-          }
-          if(mode === "international")
-          {
-            internationalNames = [...newMatchNavne];
-          }
-          setmodificeeredeNavne([...boysNames, ...girlsNames, ...unisexNames,...internationalNames]);
-          console.log(modificeeredeNavne + " modified navne")
-        } else {
-          console.error('Failed to fetch data');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    };
-    fetchData();
-  }
-  let gen = "gender"
-    let inter = "international"
-  
-     function handleChange() {
-      if (!mandCheck.checked && !kvindCheck.checked && !unisexCheck.checked && !internationalCheck.checked) {
-        filterNames()
-      }
-      const promises = [];
-      if (mandCheck.checked) {
-        promises.push(getDiffrentApi(gen, "boy"));
-      }
-      if (kvindCheck.checked) {
-        promises.push(getDiffrentApi(gen, "girl"));
-      }
-      if (unisexCheck.checked) {
-        promises.push(getDiffrentApi(gen, "uni"));
-      }
-      if(internationalCheck.checked)
-      {
-        promises.push(getDiffrentApi(inter,"true"));
-      }
-      Promise.all(promises).then(() => {
-        setmodificeeredeNavne(boysNames.concat(girlsNames, unisexNames,internationalNames));
-        filterNames();
+let boysNames : Set<string> = new Set();
+let girlsNames : Set<string> = new Set();
+let unisexNames : Set<string> = new Set();
+let internationalNames : Set<string> = new Set();
+
+async function getDiffrentApi(mode : string, firstEndPoint : string) {
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`${apiCall}${mode}/${firstEndPoint}`, {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
+
+      if (response.ok) {
+        const data = await response.json();
+        let newMatchNavne: string[] = [];
+        data.forEach((item: any) => {
+          if (matchNavne.includes(item.name)) { 
+            newMatchNavne.push(item.name);
+          }
+        });
+        switch (firstEndPoint) {
+          case "boy":
+            boysNames = new Set([...newMatchNavne]);
+            break;
+          case "girl":
+            girlsNames = new Set([...newMatchNavne]);
+            break;
+          case "uni":
+            unisexNames = new Set([...newMatchNavne]);
+            break;
+            
+          default:
+            break;
+        }
+        if(mode === "international") {
+          internationalNames = new Set([...newMatchNavne]);
+        }
+        setmodificeeredeNavne(Array.from(new Set([...boysNames, ...girlsNames, ...unisexNames,...internationalNames])));
+      }
+    } catch (error) {
+      console.error('Error:', error);
     }
+  };
+  fetchData();
+}
+
+let gen = "gender";
+let inter = "international";
+
+function handleChange() {
+  if (!mandCheck.checked && !kvindCheck.checked && !unisexCheck.checked && !internationalCheck.checked) {
+    filterNames();
+  }
+  const promises = [];
+  if (mandCheck.checked) {
+    promises.push(getDiffrentApi(gen, "boy"));
+  }
+  if (kvindCheck.checked) {
+    promises.push(getDiffrentApi(gen, "girl"));
+  }
+  if (unisexCheck.checked) {
+    promises.push(getDiffrentApi(gen, "uni"));
+  }
+  if(internationalCheck.checked) {
+    promises.push(getDiffrentApi(inter,"true"));
+  }
+  Promise.all(promises).then(() => {
+    setmodificeeredeNavne(Array.from(new Set([...boysNames, ...girlsNames, ...unisexNames,...internationalNames])));
+    filterNames();
+  });
+}
+
+
+   
     function handleSearch() {
       let inputElement = document.getElementById("search-input") as HTMLInputElement;
       let inputVærdi = inputElement.value;
@@ -185,10 +185,7 @@ function Search() {
       } 
     }   
   
-  
-  
 
- 
   return (
     <div className="search-container">
       <div className='search-list3'>

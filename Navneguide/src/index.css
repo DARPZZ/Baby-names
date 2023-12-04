@@ -4,7 +4,11 @@
 }
 .login input{
   width: 96.5%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
+
 
 .login{
   width:25%;
@@ -16,8 +20,16 @@
 
 }
 .SubmitId{
-width: 97%;
-text-align: center;
+  width: 97%;
+  text-align: center;
+  background: linear-gradient(to right, #ff105f, #ffad06);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  
+}
+.SubmitId:hover {
+  background: linear-gradient(to right, #ffad06, #ff105f);
 }
 .menu{
   width: 10%;
@@ -41,9 +53,10 @@ text-align: center;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 .menu.show {
-  
   left: 0; 
+  transition: left 0.5s ease-in-out; 
 }
+
 .menuButton {
   padding: 10px 20px;
   background-color: #333;
@@ -67,4 +80,8 @@ text-align: center;
   transition: color 0.3s ease;
   font-size: 18px;
 }
+.menu a:hover {
+  color: #ff105f;
+}
+
 
