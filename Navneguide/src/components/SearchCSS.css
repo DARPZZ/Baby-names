@@ -1,58 +1,62 @@
 .search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 75vh;
-    font-family: 'Times New Roman', Times, serif;
-  }
-  
-  .search-form {
-    position: relative;
-    right: 30%;
-    bottom: 35%;
-    width: 60%;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  font-family: 'Times New Roman', Times, serif;
+}
 
-  }
-  .checkbox-container {
-    display: flex
-  }
-  
-  .checkbox-div {
-    flex: 1;
-  }
+.search-form {
+  position: relative;
+  right: 35%;
+  bottom: 35%;
+  width: 60%;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
+}
 
+.checkbox-container {
+  display: flex;
+  flex-direction: row; 
   
-  .pop-names-list li {
-    margin-bottom: 15px;
-    font-size: 18px;
-    
-    
-  }
+}
+.form-check-inline {
+  display: inline-block;
+  margin-right: 30px;
   
-  .search-list-text{
-   
-    font-size: 18px;
-    
-  }
-  .search-list3{
-    top: 40%;
+  text-align: center;
+}
+
+
+.checkbox-div {
+  flex: 1;
+}
+
+.pop-names-list li {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.search-list-text {
+  font-size: 18px;
+}
+
+.form-inline {
+  top: 20%;
+  position: relative;
+  left: 30%;
+  font-size: 18px;
+  width: 50%;
+}
+
+table {
     position: relative;
-    left:17%;
-    font-size: 18px;
-    width: 95%;
-    
-  }
-  table {
-    border-spacing: 125px; 
-  }
-  
-  
- 
- 
- 
- 
+    border-spacing: 125px;
+    width: 50%;
+    transform: scale(0.8);
+    margin-left: 7%; 
+}
+
