@@ -1,5 +1,4 @@
 import React, { useState, ChangeEvent, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 
 interface FormData {
   email: string;
@@ -11,14 +10,6 @@ const MyForm: React.FC = () => {
     email: '',
     password: '',
   });
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
 
   useEffect(() => {
     const handleLogout = async () => {
@@ -44,7 +35,7 @@ const MyForm: React.FC = () => {
     };
 
     handleLogout();
-  }, []); // Empty dependency array means this effect will only run once, when the component mounts.
+  }, []);
   
 
   return (
