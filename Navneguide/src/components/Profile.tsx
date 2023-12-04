@@ -159,7 +159,7 @@ function Profile() {
           <label htmlFor="email">Email:</label>
           <input type="email" id="email" name="email" />
         </div>
-        <button className="submit-button">Save</button>  
+        <button id='submit-button'>Save</button>  
       </form>
 
       <div className='add-to-list'>
@@ -168,7 +168,7 @@ function Profile() {
       </div>
 
       <div className="list-container2">
-  <h1>List of all Names</h1>
+  <h3>List of all Names</h3>
   {allNames && (
     <ul className="list">
       {allNames.map((name, index) => (
@@ -180,7 +180,7 @@ function Profile() {
   )}
 </div>
       <div className="list-container">
-        <h1>List of yore Names</h1>
+        <h3>List of yore Names</h3>
         {names && (
           <ul className="list">
             {names.map((name, index) => (

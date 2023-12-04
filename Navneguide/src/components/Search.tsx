@@ -188,7 +188,7 @@ function handleChange() {
             <label className="form-check-label" htmlFor="internationalCheckbox">International</label>
           </div>
         </form>
-        <table className="table table-striped table-dark">
+        <table className="table thead-dark">
           <thead>
             <tr>
               <th scope="col">#</th>

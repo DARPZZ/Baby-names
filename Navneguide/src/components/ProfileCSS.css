@@ -6,6 +6,8 @@
 }
 
 .profile-form {
+  position:  relative;
+  left: 15%;
   width: 25%;
   border-radius: 8px;
   background-color: #fff;
@@ -54,6 +56,12 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease-in-out;
 }
+#submit-button{
+  width: 92%;
+  border: none;
+  background-color: #42b72a;
+color: white;
+}
 
 .list li:hover {
   background-color: #e9e9e9;
@@ -61,8 +69,8 @@
 
 .add-more {
   width: 25%;
-  top: 25%;
-  right: 22%;
+  top: 35%;
+  right: 42%;
   position: relative;
 }
 
@@ -81,6 +89,7 @@
 }
 
 .add-more input {
+  position: relative;
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 4px;

@@ -1,36 +1,4 @@
-.login label {
-  
-  font-size: 17px;
-}
-.login input{
-  width: 96.5%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
 
-
-.login{
-  width:25%;
-  position: relative;
-  
-  left: 45%;
- 
-  margin-top: 20%;
-
-}
-.SubmitId{
-  width: 97%;
-  text-align: center;
-  background: linear-gradient(to right, #ff105f, #ffad06);
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  
-}
-.SubmitId:hover {
-  background: linear-gradient(to right, #ffad06, #ff105f);
-}
 .menu{
   width: 10%;
   font-size: 150%;
@@ -38,16 +6,14 @@
   font-weight: bold;
 }
 .menu {
-  width: 10%;
-  font-size: 150%;
+  width: 11%;
+  font-size: 100%;
   font-family: 'Times New Roman', Times, serif;
   font-weight: bold;
   position: fixed;
   top: 0;
   left: -100%; 
   transition: left 0.5s ease-in-out; 
-
-  
   background-color: #fff;
   padding: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -73,15 +39,27 @@
 }
 
 .menu a {
+
   display: block;
   margin-bottom: 10px;
   text-decoration: none;
   color: #333;
   transition: color 0.3s ease;
-  font-size: 18px;
+  font-size: 16px;
 }
 .menu a:hover {
   color: #ff105f;
 }
+@media screen and (max-width: 1116px) {
+  .menu a {
+    font-size: 10px; 
+  }
+  .menu {
+    width: 20%;
+  }
+}
+  
+
+
 
 
