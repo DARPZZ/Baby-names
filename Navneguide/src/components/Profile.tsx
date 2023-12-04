@@ -5,7 +5,7 @@ function Profile() {
   const [names, setNames] = useState<string[] | null>(null);
   const [partnerEmail, setPartnerEmail] = useState<string | null>(null);
   const [linked, setLinked] = useState<boolean>(false);
-  
+  const [allNames, setAllNames] = useState<string[] | null>(null);
   const namesList = document.querySelectorAll('.list-container .list li');
   const namesArray = Array.from(namesList).map(li => li.textContent);
   sessionStorage.setItem('namesArray', JSON.stringify(namesArray));
@@ -40,7 +40,60 @@ function Profile() {
 
     fetchData();
   }, []);
+  interface NameObject {
+    name: string;
+  
+  }
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/names/all`, {
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+  
+        if (response.ok) {
+          const data: NameObject[] = await response.json();
+          const namesArray = data.map(item => item.name);
+          setAllNames(namesArray);
+          console.log(allNames);
+        } else {
+          console.error('Failed to fetch data');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+    fetchData();
+  }, []);
+  
+  async function addToOwnList( name : string) {
+    const email = localStorage.getItem('submittedEmail');
+  
+    try {
+      const response = await fetch(`http://localhost:5000/users/names/${email}`, {
+        method: 'POST', 
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name }), // Pass the name in the body
+      });
+  
+      if (response.ok) {
+        console.log('Name added successfully');
+      } else {
+        console.error('Failed to fetch data');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+  
 
 
   const handleAddPartner = async () => {
@@ -68,10 +121,7 @@ function Profile() {
         console.log('Partner linked successfully');
         setPartnerEmail(partnerEmail); 
         setLinked(true); // fyre css event
-        
         sessionStorage.setItem('partnerEmail', partnerEmail); // Store in session storage
-
-        // sletter css event efter 2 sec
         setTimeout(() => {
           setLinked(false);
         }, 2000);
@@ -98,8 +148,20 @@ function Profile() {
         <button className="submit-button">Save</button>  
       </form>
 
+      <div className="list-container2">
+  <h1>List of all Names</h1>
+  {allNames && (
+    <ul className="list">
+      {allNames.map((name, index) => (
+        <li key={index} onDoubleClick={() => addToOwnList(name)}> {/* Pass name on double click */}
+          {name}
+        </li>
+      ))}
+    </ul>
+  )}
+</div>
       <div className="list-container">
-        <h1>List of Names</h1>
+        <h1>List of yore Names</h1>
         {names && (
           <ul className="list">
             {names.map((name, index) => (

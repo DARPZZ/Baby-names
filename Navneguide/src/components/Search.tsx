@@ -40,31 +40,7 @@ function Search() {
 
 
   
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        
-        const response = await fetch(`http://localhost:5000/names/all`, {
-          method: 'GET',
-          credentials: 'include',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          //console.log(data)
-          
-        } else {
-          console.error('Failed to fetch data');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    };
-    fetchData();
-  }, []);
+ 
  
   useEffect(() => {
     const storedNamesArray = sessionStorage.getItem('namesArray');
