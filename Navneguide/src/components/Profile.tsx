@@ -11,8 +11,8 @@ function Profile() {
   const namesArray = Array.from(namesList).map(li => li.textContent);
   sessionStorage.setItem('namesArray', JSON.stringify(namesArray));
 
-  useEffect(() => {
-    const fetchData = async () => {
+  async function getNamesByEmail()
+    {
       try {
         const email = localStorage.getItem('submittedEmail');
        
@@ -38,14 +38,13 @@ function Profile() {
         console.error('Error:', error);
       }
     };
-
-    fetchData();
-  }, []);
+    useEffect(() => {
+      getNamesByEmail();
+    }, []);
   interface NameObject {
     name: string;
   
   }
-
   async function fetchDataAndSetNames() {
     try {
       const response = await fetch(`http://localhost:5000/names/all`, {
@@ -91,6 +90,7 @@ function Profile() {
       if (response.ok) {
         
         console.log('Name added successfully');
+        getNamesByEmail();
       } else {
         console.error('Failed to fetch data');
       }
@@ -140,7 +140,7 @@ function Profile() {
 
     function handleSearch() {
       let inputElement = document.getElementById("seach-input") as HTMLInputElement;
-      let inputVærdi = inputElement.value;
+      var inputVærdi = inputElement.value;
       if (allNames.includes(inputVærdi)) {
         setAllNames([inputVærdi]);
       }else if (inputVærdi === ""){

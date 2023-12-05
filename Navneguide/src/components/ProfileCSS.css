@@ -123,16 +123,16 @@ color: white;
 .add-to-list{
   position: relative;
   bottom: 40%;
-  LEFT: 15%;
+  LEFT: 20%;
   
 }
 .form-control.form-control-lg.form-control-borderless {
   
-  width: 100%; 
+  width: 95%; 
   
 }
 .card.card-sm{
-width: 270%;
+width: 190%;
 }
 
 

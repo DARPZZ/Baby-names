@@ -54,9 +54,11 @@
 
 table {
     position: relative;
-    border-spacing: 125px;
+   
     width: 50%;
-    transform: scale(0.8);
+    transform: scale(0.9);
     margin-left: 7%; 
+    font-size: 25px;
+
 }
 
