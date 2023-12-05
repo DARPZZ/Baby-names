@@ -7,6 +7,7 @@ import Search from './components/Search';
 import Profile from './components/Profile';
 import PopularNames from './components/PopularNames';
 import Logud from './components/Logud';
+import {Theme} from "dark-mode-ts";
 import './App.css';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
   return (
     
     <div className="App">
+      
       
       <nav className={`menu ${menuVisible ? 'show' : ''}`}>
       <Link to="/">Home</Link>
@@ -48,6 +50,18 @@ function App() {
             <Link to="/Login">Login</Link>
           </>
         )}
+        <div className='hest'>
+      <Theme
+        darkIcon={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvZWrpO9Sq1oA8FsBRuTQSg6dUFkyUG3ZAfQ&usqp=CAU"}
+        lightIcon={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGfeJ2uD4VIKIaiTk0omEMafgGFPOT6B07Qw&usqp=CAU"}
+        altDark='dark icon'
+        altLight="light icon"
+        imgWidth='50'
+        imgHeight='50'
+        myClass="your-class_name"
+      />
+      </div>
+  
       </nav>
       <Switch>
         <Route exact path="/" component={Home} />
@@ -58,6 +72,8 @@ function App() {
         <Route path="/PopularNames" component={PopularNames} />
         <Route path="/Logud" component={Logud} />
       </Switch>
+
+     
     </div>
   );
 }
