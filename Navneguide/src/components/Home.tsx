@@ -1,12 +1,14 @@
 import './HomeCSS.css';
 function Home() {
-  return <div className='home-container'>
-  
-        <img
-            className="LOGO"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/768px-LEGO_logo.svg.png"
-          />
-  </div>
-}
+  return( 
+    <div className='home-page'>
+      <div className='home-container'>
+            <img
+                className="LOGO"
+                src="https://cdn.discordapp.com/attachments/1060882642570072134/1181542272949563412/EBN_Logo.png?ex=65816ffd&is=656efafd&hm=810cada5243de0cb22e1547b225ff53043691a23fe21bd190a21bf678fb66fb2&"
+              />
+      </div>
+  </div> 
+)};
 
 export default Home
