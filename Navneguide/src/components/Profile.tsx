@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './ProfileCSS.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Profile() {
   const [names, setNames] = useState<string[] | null>(null);
@@ -162,35 +163,53 @@ function Profile() {
         <button id='submit-button'>Save</button>  
       </form>
 
-      <div className='add-to-list'>
-        <h5>Search:</h5>
-        <input id='seach-input'  type="text" onChange={handleSearch} />
+    <div className='add-to-list'>
+          <div className="container">
+        <br/>
+          <div className="row justify-content-center">
+              <div className="col-12 col-md-10 col-lg-8">
+                  <form className="card card-sm">
+                      <div className="card-body row no-gutters align-items-center">
+                          <div className="col-auto">
+                              <i className="fas fa-search h4 text-body"></i>
+                          </div>
+                          <div className="col">
+                            
+                              <input className="form-control form-control-lg form-control-borderless" type="search" placeholder="Search for Names" onChange={handleSearch} id='seach-input'></input>
+                          </div>
+                          
+                      </div>
+                  </form>
+              </div>
+          </div>
+        </div>
       </div>
 
       <div className="list-container2">
   <h3>List of all Names</h3>
   {allNames && (
-    <ul className="list">
+    <ul className="list list-group">
       {allNames.map((name, index) => (
-        <li key={index} onDoubleClick={() => addToOwnList(name)}> {/* Pass name on double click */}
+        <li key={index} className="list-group-item" onDoubleClick={() => addToOwnList(name)}>
           {name}
         </li>
       ))}
     </ul>
   )}
 </div>
-      <div className="list-container">
-        <h3>List of yore Names</h3>
-        {names && (
-          <ul className="list">
-            {names.map((name, index) => (
-              <li key={index}>
-                {name}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+<div className="list-container">
+  <h3>List of Your Names</h3>
+  {names && (
+    <ul className="list list-group">
+      {names.map((name, index) => (
+        <li key={index} className="list-group-item">
+          {name}
+        </li>
+      ))}
+    </ul>
+  )}
+</div>
+
 
       <div className='add-more'>
         <input

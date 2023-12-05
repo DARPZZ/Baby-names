@@ -68,7 +68,7 @@ color: white;
 }
 
 .add-more {
-  width: 25%;
+  width: 15%;
   top: 35%;
   right: 42%;
   position: relative;
@@ -123,6 +123,16 @@ color: white;
 .add-to-list{
   position: relative;
   bottom: 40%;
-  LEFT: 20%;
-  text-align: center;
+  LEFT: 15%;
+  
 }
+.form-control.form-control-lg.form-control-borderless {
+  
+  width: 100%; 
+  
+}
+.card.card-sm{
+width: 270%;
+}
+
+
