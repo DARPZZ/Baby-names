@@ -2,13 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 75vh;
+  width: 100vh;
 }
 .LOGO{
   position: relative;
-  width: 40%;
+  width: 80%;
   bottom: 50%;
-  left: 8%;
+  left: 75%;
   
 }
 .home-page{
@@ -24,5 +25,6 @@ position: relative;
 top: 45%;
 left: 35%;
 color: whitesmoke;
+width: 60%;
 
 }

@@ -20,7 +20,9 @@ function App() {
   }, []);
 
   return (
+    
     <div className="App">
+      
       <nav className={`menu ${menuVisible ? 'show' : ''}`}>
       <Link to="/">Home</Link>
       <br />
