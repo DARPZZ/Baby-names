@@ -126,7 +126,7 @@ function Profile() {
         console.log('Partner linked successfully');
         setPartnerEmail(partnerEmail); 
         setLinked(true); // fyre css event
-        sessionStorage.setItem('partnerEmail', partnerEmail); // Store in session storage
+        sessionStorage.setItem('partnerEmail', partnerEmail);
         setTimeout(() => {
           setLinked(false);
         }, 2000);
@@ -137,6 +137,54 @@ function Profile() {
       console.error('Error:', error);
     }
   };
+
+  async function changePasOrEmail() {
+    try {
+      let email = localStorage.getItem('submittedEmail');
+      const emailElement = document.getElementById('email') as HTMLInputElement | null;
+      const passwordElement = document.getElementById('password') as HTMLInputElement | null;
+      const baseApi = 'http://localhost:5000/users/'
+      
+      let partnerEmail: string = '';
+      let password: string = '';
+
+      if (emailElement !== null && emailElement.value.trim() !== '') {
+        partnerEmail = emailElement.value;
+        const response = await fetch(`${baseApi}email/${email}`, {
+          method: 'PATCH',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: partnerEmail }),
+        });
+        if (response.ok) {
+          email = partnerEmail; 
+          localStorage.setItem('submittedEmail', partnerEmail);
+          console.log('updated email, to ' + partnerEmail);
+        }
+      }
+      
+      if(passwordElement !== null && passwordElement.value.trim() !== ''){
+        password = passwordElement.value;
+        const response = await fetch(`${baseApi}pass/${email}`, {
+          method: 'PATCH',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ password: password }),
+        });
+        if (response.ok) {
+          console.log('updated password');
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
 
     function handleSearch() {
       let inputElement = document.getElementById("seach-input") as HTMLInputElement;
@@ -158,9 +206,9 @@ function Profile() {
         </div>
         <div className="profile-group">
           <label htmlFor="email">Adgangskode:</label>
-          <input type="password" id="email" name="email" />
+          <input type="password" id="password" name="password" />
         </div>
-        <button id='submit-button'>Gem</button>  
+        <button type='button' onClick={changePasOrEmail} id='submit-button'>Gem</button>  
       </form>
 
     <div className='add-to-list'>
@@ -184,7 +232,9 @@ function Profile() {
           </div>
         </div>
       </div>
-
+      <div className='update-label'>
+        <h2>update bruger info</h2>
+      </div>
       <div className="list-container2">
   <h3>Liste over alle navne</h3>
   {allNames && (
