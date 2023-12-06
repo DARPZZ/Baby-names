@@ -25,7 +25,7 @@ const MyForm: React.FC = () => {
 
         if (response.ok) {
           sessionStorage.removeItem('loggedIn');
-          localStorage.removeItem('partnerEmail');
+          sessionStorage.removeItem('partnerEmail');
           
           window.location.href = '/'
         }

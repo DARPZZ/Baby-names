@@ -39,7 +39,7 @@ function Search() {
   }, []);
 
   async function  test() {
-    const email = localStorage.getItem('submittedEmail');
+    const email = sessionStorage.getItem('submittedEmail');
        
   const response = await fetch(`http://localhost:5000/users/email/${email}`, {
     method: 'GET',

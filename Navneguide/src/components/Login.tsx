@@ -51,7 +51,7 @@ const MyForm: React.FC = () => {
           const userDetailsData = await userDetailsResponse.json();
        
           setUserDetails(userDetailsData); // gem i state
-          localStorage.setItem('submittedEmail', formData.email);
+          sessionStorage.setItem('submittedEmail', formData.email);
           window.location.href = 'Profile'
         }
       }

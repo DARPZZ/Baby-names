@@ -14,7 +14,7 @@ function Profile() {
   async function getNamesByEmail()
     {
       try {
-        const email = localStorage.getItem('submittedEmail');
+        const email = sessionStorage.getItem('submittedEmail');
        
         const response = await fetch(`http://localhost:5000/users/email/${email}`, {
           method: 'GET',
@@ -75,7 +75,7 @@ function Profile() {
   
   
   async function addToOwnList( name : string) {
-    const email = localStorage.getItem('submittedEmail');
+    const email = sessionStorage.getItem('submittedEmail');
   
     try {
       const response = await fetch(`http://localhost:5000/users/names/${email}`, {
@@ -103,7 +103,7 @@ function Profile() {
 
   const handleAddPartner = async () => {
     try {
-      const email = localStorage.getItem('submittedEmail');
+      const email = sessionStorage.getItem('submittedEmail');
       const partnerEmailElement = document.getElementById('ral') as HTMLInputElement | null;
 
       let partnerEmail: string = '';
@@ -140,7 +140,7 @@ function Profile() {
 
   async function changePasOrEmail() {
     try {
-      let email = localStorage.getItem('submittedEmail');
+      let email = sessionStorage.getItem('submittedEmail');
       const emailElement = document.getElementById('email') as HTMLInputElement | null;
       const passwordElement = document.getElementById('password') as HTMLInputElement | null;
       const baseApi = 'http://localhost:5000/users/'
@@ -160,7 +160,7 @@ function Profile() {
         });
         if (response.ok) {
           email = partnerEmail; 
-          localStorage.setItem('submittedEmail', partnerEmail);
+          sessionStorage.setItem('submittedEmail', partnerEmail);
           console.log('updated email, to ' + partnerEmail);
         }
       }
