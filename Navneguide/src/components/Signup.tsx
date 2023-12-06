@@ -28,8 +28,8 @@ function Signup() {
           body: JSON.stringify(formData),
         });
         if (response.ok) {
-          localStorage.setItem('signUpEmail', formData.email);
-          localStorage.setItem('signUpPassword', formData.password);
+          
+         
           console.log('Data sent successfully!');
           console.log(response);
           window.location.href = 'Login'
@@ -47,9 +47,9 @@ function Signup() {
     <div className='signup-page'>
       <div className="signup-container">
         <form className="signup-form" onSubmit={handleSubmit}>
-          <h2>Signup</h2>
+          <h2>registrering</h2>
           <div className="form-group">
-            <label id='name-label' htmlFor="name">name:</label>
+            <label id='name-label' htmlFor="name">Navn:</label>
             <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} />
           </div>
           <div className="form-group">
@@ -57,7 +57,7 @@ function Signup() {
             <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
           </div>
           <div className="form-group">
-            <label id='password-label' htmlFor="password">Password:</label>
+            <label id='password-label' htmlFor="password">Adgangskode:</label>
             <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} />
           </div>
           <button type="submit" className="submit-button">

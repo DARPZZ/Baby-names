@@ -5,12 +5,12 @@ function Home() {
   return( 
     
     <div className='home-page'>
-      <div className=' test'>
+      <div className=' typewriter'>
         <h1 style={{ color: 'whitesmoke', paddingTop: '5rem', margin: 'auto 0', fontWeight: 'bold' }}>
-          We can help you with{' '}
+         Vi kan hjælpe dig med at{' '}
           <span style={{ color: 'red', fontWeight: 'bold' }}>
             <Typewriter
-              words={['finding boys names', 'finding girls names', 'finding popular names', 'and much more!']}
+              words={['finde drenge navne', 'finde pige navne', 'finde populære navne', 'og meget mere !']}
               loop={Infinity}
               cursor
               cursorStyle='_'

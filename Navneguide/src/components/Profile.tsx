@@ -153,14 +153,14 @@ function Profile() {
     <div className="profile-container">
       <form className="profile-form">
         <div className="profile-group">
-          <label htmlFor="UserName">Username:</label>
-          <input type="text" id="UserName" name="UserName" />
-        </div>
-        <div className="profile-group">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="UserName">Email:</label>
           <input type="email" id="email" name="email" />
         </div>
-        <button id='submit-button'>Save</button>  
+        <div className="profile-group">
+          <label htmlFor="email">Adgangskode:</label>
+          <input type="password" id="email" name="email" />
+        </div>
+        <button id='submit-button'>Gem</button>  
       </form>
 
     <div className='add-to-list'>
@@ -175,7 +175,7 @@ function Profile() {
                           </div>
                           <div className="col">
                             
-                              <input className="form-control form-control-lg form-control-borderless" type="search" placeholder="Search for Names" onChange={handleSearch} id='seach-input'></input>
+                              <input className="form-control form-control-lg form-control-borderless" type="search" placeholder="Søg efter navne" onChange={handleSearch} id='seach-input'></input>
                           </div>
                           
                       </div>
@@ -186,7 +186,7 @@ function Profile() {
       </div>
 
       <div className="list-container2">
-  <h3>List of all Names</h3>
+  <h3>Liste over alle navne</h3>
   {allNames && (
     <ul className="list list-group">
       {allNames.map((name, index) => (
@@ -198,7 +198,7 @@ function Profile() {
   )}
 </div>
 <div className="list-container">
-  <h3>List of Your Names</h3>
+  <h3>Liste over egne navne</h3>
   {names && (
     <ul className="list list-group">
       {names.map((name, index) => (
@@ -219,7 +219,7 @@ function Profile() {
           className={linked ? 'linked-partner' : ''}
         />
         <button id='add-button' className='add-button' onClick={handleAddPartner}>
-          Link your partner
+          Link din partner
         </button>
       </div>
     </div>

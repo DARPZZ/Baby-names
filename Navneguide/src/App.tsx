@@ -26,10 +26,10 @@ function App() {
       
       
       <nav className={`menu ${menuVisible ? 'show' : ''}`}>
-      <Link to="/">Home</Link>
+      <Link to="/">Hjem</Link>
       <br />
       <br />
-      <Link to="/PopularNames">PopularNames</Link>
+      <Link to="/PopularNames">Populære navne</Link>
       <br />
       <br />
         {loggedIn ? (
@@ -37,17 +37,17 @@ function App() {
             <Link to="/Profile">Profile</Link>
             <br />
             <br />
-            <Link to="/Search">Search</Link>
+            <Link to="/Search">Søg</Link>
             <br />
             <br />
             <Link to="/Logud">Logud</Link>
           </>
         ) : (
           <>
-            <Link to="/Signup">Signup</Link>
+            <Link to="/Signup">registrering</Link>
             <br />
             <br />
-            <Link to="/Login">Login</Link>
+            <Link to="/Login">Log på</Link>
           </>
         )}
         <div className='hest'>

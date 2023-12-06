@@ -23,6 +23,12 @@
   flex-direction: row; 
   
 }
+.form-check.form-check-inline
+{
+  position: relative;
+  left: 14%;
+  padding-right: 2px;
+}
 .form-check-inline {
   display: inline-block;
   margin-right: 30px;

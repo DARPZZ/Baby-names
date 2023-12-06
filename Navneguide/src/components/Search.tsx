@@ -192,7 +192,7 @@ function handleChange() {
         
         <form className="form-inline">
         <div className="form-group">
-          <label htmlFor="search-input">Search:</label>
+          <label htmlFor="search-input">Søg:</label>
           <input 
             onChange={handleSearch} 
             id='search-input' 
@@ -208,7 +208,7 @@ function handleChange() {
 
           <div className="form-check form-check-inline">
             <input className="form-check-input" type="checkbox" id='mandCheckbox' name="checkbox1" onChange={handleChange} />
-            <label className="form-check-label" htmlFor="mandCheckbox">Mand</label>
+            <label className="form-check-label" htmlFor="mandCheckbox">Mand</label> 
           </div>
           <div className="form-check form-check-inline">
             <input className="form-check-input" type="checkbox" id='kvindeCheckbox' name="checkbox1" onChange={handleChange} />
