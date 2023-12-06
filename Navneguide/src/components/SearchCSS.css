@@ -43,6 +43,9 @@
 .search-list-text {
   font-size: 18px;
 }
+.form-check-label{
+  font-weight: bolder;
+}
 
 .form-inline {
   top: 2%;

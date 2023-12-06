@@ -13,11 +13,16 @@
   }
   
   [data-theme='light'] {
-    --background-color: whitesmoke;
+    --background-color: rgb(205, 204, 204);
     --color-text: black
   }
   
   body {
     background: var(--background-color);
     color: var(--color-text);
-  }  
+  }
+  .form-check-label{
+    font-weight: bolder;
+    background: var(--background-color);
+    color: var(--color-text);
+  }

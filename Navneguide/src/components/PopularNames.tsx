@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import cheerio from 'cheerio';
 import './PopularNamesCSS.css';
-
 interface NameInfo {
   name: string;
   population: string;
@@ -71,6 +70,9 @@ function PopularNames() {
     );
   };
 
+
+
+  
   return (
     <div className="Popularnames-group">
       <div className="popnames-container">
