@@ -26,7 +26,7 @@ const MyForm: React.FC = () => {
         if (response.ok) {
           sessionStorage.removeItem('loggedIn');
           sessionStorage.removeItem('partnerEmail');
-          
+          sessionStorage.removeItem('uploadCalled');
           window.location.href = '/'
         }
       } catch (error) {

@@ -11,6 +11,10 @@ function Profile() {
   const namesArray = Array.from(namesList).map(li => li.textContent);
   sessionStorage.setItem('namesArray', JSON.stringify(namesArray));
 
+
+  
+ 
+
   async function getNamesByEmail()
     {
       try {
@@ -137,7 +141,6 @@ function Profile() {
       console.error('Error:', error);
     }
   };
-
   async function changePasOrEmail() {
     try {
       let email = sessionStorage.getItem('submittedEmail');
@@ -183,6 +186,7 @@ function Profile() {
       console.log(error);
     }
   }
+  
 
 
 
@@ -208,7 +212,7 @@ function Profile() {
           <label htmlFor="email">Adgangskode:</label>
           <input type="password" id="password" name="password" />
         </div>
-        <button type='button' onClick={changePasOrEmail} id='submit-button'>Gem</button>  
+        <button type='button' onClick={changePasOrEmail} id='submit-button'>update bruger info</button>  
       </form>
 
     <div className='add-to-list'>
@@ -232,9 +236,7 @@ function Profile() {
           </div>
         </div>
       </div>
-      <div className='update-label'>
-        <h2>update bruger info</h2>
-      </div>
+      
       <div className="list-container2">
   <h3>Liste over alle navne</h3>
   {allNames && (

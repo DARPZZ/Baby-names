@@ -44,7 +44,7 @@ function App() {
           </>
         ) : (
           <>
-            <Link to="/Signup">registrering</Link>
+            <Link to="/Signup">Registrering</Link>
             <br />
             <br />
             <Link to="/Login">Log på</Link>

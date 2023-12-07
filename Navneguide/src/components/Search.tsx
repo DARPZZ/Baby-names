@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, {  useState, useEffect } from 'react';
 import './SearchCSS.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 function Search() {
  
   const [names, setNames] = useState<string[]>([]);
   const [namesArray, setNamesArray] = useState<string[]>([]);
   const [matchNavne, setmatchNavne] = useState<string[]>([]);
   const [modificeeredeNavne, setmodificeeredeNavne] = useState<string[]>([]);
- 
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -72,23 +71,57 @@ useEffect(() => {
   //   setNamesArray(parsedNamesArray);
   // }, []);
 
-  useEffect(() => {
+
   
-    const newMatchingNavne = names.filter(name => namesArray.includes(name));
-    setmatchNavne(newMatchingNavne);
-    setmodificeeredeNavne(newMatchingNavne);
-   
+
+
   
-  }, [names, namesArray]);
 
   function filterNames() {
     
     const newMatchingNavne = names.filter(name => namesArray.includes(name));
     setmatchNavne(newMatchingNavne);
-    setmodificeeredeNavne(newMatchingNavne);
-    
-    
+    setmodificeeredeNavne(newMatchingNavne);  
   }
+  useEffect(() => {
+    if (names.length > 0 && namesArray.length > 0) {
+      const newMatchingNavne = names.filter(name => namesArray.includes(name));
+      setmatchNavne(newMatchingNavne);
+      setmodificeeredeNavne(newMatchingNavne);
+      if (sessionStorage.getItem('uploadCalled') === null) {
+        uploadMatches(newMatchingNavne);
+        sessionStorage.setItem('uploadCalled', 'true');
+      }
+    }
+  }, [names, namesArray]);
+  
+  
+  
+  
+  async function uploadMatches(matchNavne: string[]) {
+    for (let i = 0; i < matchNavne.length; i++) {
+      try {
+        const response = await fetch(`http://localhost:5000/matches`, {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ 
+            name: matchNavne[i], 
+            date: new Date() 
+          }),
+        });
+  
+        if (response.ok) {
+          console.log("all good");
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+  }
+  
   
 let mandCheck = document.getElementById("mandCheckbox") as HTMLInputElement;
 let kvindCheck = document.getElementById("kvindeCheckbox") as HTMLInputElement;
