@@ -140,3 +140,14 @@ width: 190%;
   right: 25%;
 }
 
+.remove{
+  position: relative;
+  right: 0.5%;
+  top: 50%;
+  width: 10%;
+  height: 5%;
+}
+#remove-button{
+  width: 194%;
+  height: 120%;
+}

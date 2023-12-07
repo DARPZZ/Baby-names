@@ -188,7 +188,22 @@ function Profile() {
   }
   
 
+  async function removeAllnames()
+  {
+    let email = sessionStorage.getItem('submittedEmail');
+    const response = await fetch(`http://localhost:5000/users/names/clear/${email}`, {
+        method: 'PATCH',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ }),
+      });
 
+      if (response.ok) {
+        getNamesByEmail();
+      }
+  }
 
     function handleSearch() {
       let inputElement = document.getElementById("seach-input") as HTMLInputElement;
@@ -274,6 +289,12 @@ function Profile() {
           Link din partner
         </button>
       </div>
+      <div className='remove'>
+       <button id='remove-button' onClick={removeAllnames}>
+        Slet alle dine navne
+       </button>
+      </div>
+      
     </div>
   );
 }

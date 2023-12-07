@@ -7,8 +7,10 @@ import Search from './components/Search';
 import Profile from './components/Profile';
 import PopularNames from './components/PopularNames';
 import Logud from './components/Logud';
+import ServiceVilkår from './components/servicevilkår';
 import {Theme} from "dark-mode-ts";
 import './App.css';
+import servicevilkår from './components/servicevilkår';
 
 function App() {
   const [menuVisible, setMenuVisible] = useState(true); 
@@ -57,6 +59,7 @@ function App() {
       </div>
       </nav>
       <Switch>
+        <Route path="/servicevilkår" component={servicevilkår} />
         <Route exact path="/" component={Home} />
         <Route path="/Signup" component={Signup} />
         <Route path="/Login" component={Login} />

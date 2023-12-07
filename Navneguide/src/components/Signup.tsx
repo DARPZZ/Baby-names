@@ -63,10 +63,14 @@ function Signup() {
           <button type="submit" className="submit-button">
             Submit
           </button>
+          <p className="terms-of-service">
+            Ved at klikke på denne knap accepterer du vores <a href="/servicevilkår">servicevilkår</a>
+          </p>
         </form>
       </div>
     </div>
   );
+
 }
 
 export default Signup;

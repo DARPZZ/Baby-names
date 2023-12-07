@@ -1,0 +1,16 @@
+.vilkår {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+  }
+.headers{
+    position: relative;
+    left: 42%;
+    height: 15%;
+}
+.betingelser{
+    top: 15%;
+    position: relative;
+    width: 60%;
+    text-align: center;
+}
