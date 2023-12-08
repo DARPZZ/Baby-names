@@ -27,3 +27,8 @@
     background: var(--background-color);
     color: var(--color-text);
   }
+  .terms-of-service{
+    font-size: 22px;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+  }

@@ -64,8 +64,9 @@ function Signup() {
             Submit
           </button>
           <p className="terms-of-service">
-            Ved at klikke på denne knap accepterer du vores <a href="/servicevilkår">servicevilkår</a>
+           Ved at klikke på denne knap accepterer du vores <a href="/servicevilkår" style={{ color: 'blue', fontSize : '25px' } }>servicevilkår</a>
           </p>
+
         </form>
       </div>
     </div>

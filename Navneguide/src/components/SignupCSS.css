@@ -90,3 +90,8 @@ input[type='password'] {
   
   font-family: 'Numans', sans-serif;
 }
+.terms-of-service{
+  font-size: 22px;
+  color: white;
+  font-family: 'Times New Roman', Times, serif;
+}
