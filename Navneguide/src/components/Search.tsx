@@ -37,7 +37,7 @@ function Search() {
     fetchData();
   }, []);
 
-  async function  test() {
+  async function namesArrayIni() {
     const email = sessionStorage.getItem('submittedEmail');
        
   const response = await fetch(`http://localhost:5000/users/email/${email}`, {
@@ -59,8 +59,7 @@ function Search() {
   }
 useEffect(() => {
   
-   test();
-    
+  namesArrayIni();
   }, []);
   
  

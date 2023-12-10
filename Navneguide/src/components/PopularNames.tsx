@@ -30,7 +30,8 @@ function PopularNames() {
           name = name.replace(/^\d+/, ''); 
 
           const populationNode = $(element).find('div.aon-name-listing__link-population');
-          const population = populationNode.text().trim();
+          let population = populationNode.text().trim();
+          population = population.replace(/fikk/g, 'fik');
 
           const genderClass = $(element).find('div[class*=gender-clock]');
           let gender = 'Unknown';
