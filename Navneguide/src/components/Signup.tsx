@@ -60,7 +60,7 @@ function Signup() {
     <div className='signup-page'>
       <div className="signup-container">
         <form className="signup-form" onSubmit={handleSubmit}>
-          <h2>registrering</h2>
+          <h2>Registrering</h2>
           <div className="form-group">
             <label id='name-label' htmlFor="name">Navn:</label>
             <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} />

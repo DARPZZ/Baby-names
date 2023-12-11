@@ -70,7 +70,7 @@ const MyForm: React.FC = () => {
       <div className="d-flex justify-content-center h-100">
         <div className="card">
           <div className="card-header">
-            <h3>Sign In</h3>
+            <h3>Log på</h3>
           </div>
           <div className="card-body">
             <form onSubmit={handleSubmit}>
@@ -78,7 +78,7 @@ const MyForm: React.FC = () => {
                 <input type="text" className="form-control" placeholder="Email" name="email" value={formData.email} onChange={handleChange} />
               </div>
               <div className="input-group form-group">
-              <input type="password" className="form-control" placeholder="Password" name="password" value={formData.password}
+              <input type="password" className="form-control" placeholder="Adgangskode" name="password" value={formData.password}
                onChange={handleChange}
                style={isError ? {borderColor: 'red', borderWidth: '3px'} : {}} />
             </div>
