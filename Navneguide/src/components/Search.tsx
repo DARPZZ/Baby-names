@@ -61,20 +61,6 @@ useEffect(() => {
   
   namesArrayIni();
   }, []);
-  
- 
- 
-  // useEffect(() => {
-  //   const storedNamesArray = sessionStorage.getItem('namesArray');
-  //   const parsedNamesArray = storedNamesArray ? JSON.parse(storedNamesArray) : [];
-  //   setNamesArray(parsedNamesArray);
-  // }, []);
-
-
-  
-
-
-  
 
   function filterNames() {
     
@@ -82,6 +68,7 @@ useEffect(() => {
     setmatchNavne(newMatchingNavne);
     setmodificeeredeNavne(newMatchingNavne);  
   }
+
   useEffect(() => {
     if (names.length > 0 && namesArray.length > 0) {
       const newMatchingNavne = names.filter(name => namesArray.includes(name));
@@ -127,7 +114,6 @@ let kvindCheck = document.getElementById("kvindeCheckbox") as HTMLInputElement;
 let unisexCheck = document.getElementById("unisexCheckbox") as HTMLInputElement;
 let internationalCheck = document.getElementById("internationalCheckbox") as HTMLInputElement;
 let apiCall ="http://localhost:5000/names/";
-
 let boysNames : Set<string> = new Set();
 let girlsNames : Set<string> = new Set();
 let unisexNames : Set<string> = new Set();

@@ -18,7 +18,6 @@ function servicevilkår() {
             </p>
             <h3>
             2. Brug af Tjenesten
-
             </h3>
             <p>
                 a. EasybabyNames giver en platform for forældre til at udforske og opdage babynavne.
@@ -42,8 +41,6 @@ function servicevilkår() {
                 Hvis du har spørgsmål eller bekymringer vedrørende disse Vilkår og Betingelser, bedes du kontakte os på EasybabyNames@gmail.com.
 
                 Ved at bruge EasybabyNames accepterer du at overholde disse Vilkår og Betingelser. Tak fordi du bruger EasybabyNames
-
-
             </p>
         </div>
     </div>

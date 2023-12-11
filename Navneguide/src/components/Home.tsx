@@ -3,7 +3,6 @@ import { Typewriter } from 'react-simple-typewriter'
 
 function Home() {
   return( 
-    
     <div className='home-page'>
       <div className=' typewriter'>
         <h1 style={{ color: 'whitesmoke', paddingTop: '5rem', margin: 'auto 0', fontWeight: 'bold' }}>

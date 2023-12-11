@@ -22,7 +22,7 @@ const MyForm: React.FC = () => {
       [name]: value,
     });
   };
-/* sprøg om min bruger eksistere */
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 

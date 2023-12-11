@@ -25,8 +25,6 @@ function PopularNames() {
         $('ul.aon-name-listing__list li').each((index, element) => {
           const nameNode = $(element).find('a div').first();
           let name = nameNode.text().trim();
-
-          // Remove leading digit if present
           name = name.replace(/^\d+/, ''); 
 
           const populationNode = $(element).find('div.aon-name-listing__link-population');
