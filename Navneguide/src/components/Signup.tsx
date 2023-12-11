@@ -7,14 +7,30 @@ function Signup() {
     email: '',
     password: ''
   });
+  const [passwordStrength, setPasswordStrength] = useState('');
 
+
+
+  const checkPasswordStrength = (password : string) => {
+    if (password.length < 6) {
+      setPasswordStrength('Weak');
+    } else if (password.length < 10) {
+      setPasswordStrength('Moderate');
+    } else {
+      setPasswordStrength('Strong');
+    }
+  };
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    if (name === 'password') {
+      checkPasswordStrength(value);
+    }
     setFormData({
       ...formData,
       [name]: value,
     });
   };
+  
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -56,7 +72,14 @@ function Signup() {
           <div className="form-group">
             <label id='password-label' htmlFor="password">Adgangskode:</label>
             <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} />
+            {passwordStrength && (
+              <div className="password-strength">
+                Password Strength: {passwordStrength}
+              </div>
+            )}
           </div>
+
+
           <button type="submit" className="submit-button">
             Submit
           </button>

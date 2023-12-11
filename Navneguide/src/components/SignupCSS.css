@@ -95,3 +95,9 @@ input[type='password'] {
   color: white;
   font-family: 'Times New Roman', Times, serif;
 }
+.password-strength {
+  color: white; 
+  font-size: 17px; 
+  margin-top: 5px;
+}
+
