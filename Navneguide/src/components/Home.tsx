@@ -10,7 +10,7 @@ function Home() {
          Vi kan hjælpe dig med at{' '}
           <span style={{ color: 'red', fontWeight: 'bold' }}>
             <Typewriter
-              words={['finde drenge navne', 'finde pige navne', 'finde populære navne', 'og meget mere !']}
+              words={['finde drenge navne', 'finde pige navne', 'finde populære navne']}
               loop={Infinity}
               cursor
               cursorStyle='_'

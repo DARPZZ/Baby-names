@@ -71,10 +71,10 @@ const MyForm: React.FC = () => {
           <div className="card-body">
             <form onSubmit={handleSubmit}>
               <div className="input-group form-group">
-                <input type="text" className="form-control" placeholder="email" name="email" value={formData.email} onChange={handleChange} />
+                <input type="text" className="form-control" placeholder="Email" name="email" value={formData.email} onChange={handleChange} />
               </div>
               <div className="input-group form-group">
-                <input type="password" className="form-control" placeholder="password" name="password" value={formData.password} onChange={handleChange} />
+                <input type="password" className="form-control" placeholder="Password" name="password" value={formData.password} onChange={handleChange} />
               </div>
               <div className="form-group">
                 <input id='login_btn' type="submit" value="Login" className="btn float-right login_btn" />

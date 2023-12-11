@@ -24,7 +24,7 @@
 .list-container {
   position: absolute;
   top: 25%;
-  right: 0;
+  right: 5%;
   width: 19%;
   height: 50%;
   overflow-y: auto;
@@ -34,7 +34,7 @@
 .list-container2 {
   position: absolute;
   top: 25%;
-  right: 20%;
+  right: 25%;
   width: 19%;
   height: 50%;
   overflow-y: auto;
@@ -123,8 +123,7 @@ color: white;
 .add-to-list{
   position: relative;
   bottom: 40%;
-  LEFT: 30%;
-  
+  LEFT: 24%;
 }
 .form-control.form-control-lg.form-control-borderless {
   
@@ -142,8 +141,8 @@ width: 190%;
 
 .remove{
   position: relative;
-  right: 0.5%;
-  top: 50%;
+  right: 5%;
+  top: 53%;
   width: 10%;
   height: 5%;
 }
