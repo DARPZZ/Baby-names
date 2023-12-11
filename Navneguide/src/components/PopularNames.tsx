@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import maleLogo from './Billeder/Male-removebg-preview.png';
+import femaleLogo from './Billeder/FemalePink.png';
+import unisexLogo from './Billeder/Unisex.png';
 import axios from 'axios';
 import cheerio from 'cheerio';
 import './PopularNamesCSS.css';
@@ -79,20 +82,20 @@ function PopularNames() {
         <div className='popnames'>
           <img
             className="small-image"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Male_symbol_%28bold%29.svg/330px-Male_symbol_%28bold%29.svg.png"
+            src= {maleLogo}
           />
           {renderNameList(namesData.filter(item => item.gender === 'Male'))}
         </div>
         <div className='popnames2'>
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8hKzJCaHdksGFof_3UecLLNCZZUM5b-_Kyg&usqp=CAU"
-            className='small-image'
+            src= {femaleLogo}
+            className='small-image2'
           />
           {renderNameList(namesData.filter(item => item.gender === 'Female'))}
         </div>
         <div className='popnames3'>
           <img
-            src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX47099397.jpg"
+            src= {unisexLogo}
             className='small-image'
           />
           {renderNameList(namesData.filter(item => item.gender === 'Unknown'))}
