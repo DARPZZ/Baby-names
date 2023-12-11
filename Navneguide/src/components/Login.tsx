@@ -14,6 +14,7 @@ const MyForm: React.FC = () => {
   const [submittedEmail, setSubmittedEmail] = useState<string>('');
   const [userId, setUserId] = useState<string>('');
   const [userDetails, setUserDetails] = useState<any>(null); //save state
+  const [isError, setIsError] = useState<boolean>(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -35,10 +36,13 @@ const MyForm: React.FC = () => {
         body: JSON.stringify(formData),
         credentials: 'include',
       });
-
-      if (response.ok) {
+      if(!response.ok)
+      {
+       setIsError(true)
+        
+      }else
+      {
         const userId = await response.text();
-       
         setSubmittedEmail(formData.email);
         sessionStorage.setItem('loggedIn', 'true');
         setUserId(userId);
@@ -50,7 +54,7 @@ const MyForm: React.FC = () => {
         if (userDetailsResponse.ok) {
           const userDetailsData = await userDetailsResponse.json();
        
-          setUserDetails(userDetailsData); // gem i state
+          setUserDetails(userDetailsData); 
           sessionStorage.setItem('submittedEmail', formData.email);
           window.location.href = 'Profile'
         }
@@ -74,8 +78,10 @@ const MyForm: React.FC = () => {
                 <input type="text" className="form-control" placeholder="Email" name="email" value={formData.email} onChange={handleChange} />
               </div>
               <div className="input-group form-group">
-                <input type="password" className="form-control" placeholder="Password" name="password" value={formData.password} onChange={handleChange} />
-              </div>
+              <input type="password" className="form-control" placeholder="Password" name="password" value={formData.password}
+               onChange={handleChange}
+               style={isError ? {borderColor: 'red', borderWidth: '3px'} : {}} />
+            </div>
               <div className="form-group">
                 <input id='login_btn' type="submit" value="Login" className="btn float-right login_btn" />
               </div>
