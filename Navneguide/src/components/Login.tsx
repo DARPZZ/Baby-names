@@ -83,7 +83,7 @@ const MyForm: React.FC = () => {
                style={isError ? {borderColor: 'red', borderWidth: '3px'} : {}} />
             </div>
               <div className="form-group">
-                <input id='login_btn' type="submit" value="Login" className="btn float-right login_btn" />
+                <input id='login_btn' type="submit" value="Log på" className="btn float-right login_btn" />
               </div>
             </form>
           </div>
