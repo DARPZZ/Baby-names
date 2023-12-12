@@ -8,7 +8,7 @@ function Search() {
   const [namesArray, setNamesArray] = useState<string[]>([]);
   const [matchNavne, setmatchNavne] = useState<string[]>([]);
   const [modificeeredeNavne, setmodificeeredeNavne] = useState<string[]>([]);
-
+  const [modificeeredeNavneOrgi, setmodificeeredeNavneOrgi] = useState<string[]>([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -24,8 +24,6 @@ function Search() {
         if (response.ok) {
           const data = await response.json();
           setNames(data.names || []);
-          
-  
         } else {
           console.error('Failed to fetch data');
         }
@@ -67,6 +65,7 @@ useEffect(() => {
     const newMatchingNavne = names.filter(name => namesArray.includes(name));
     setmatchNavne(newMatchingNavne);
     setmodificeeredeNavne(newMatchingNavne);  
+    setmodificeeredeNavneOrgi(newMatchingNavne);
   }
 
   useEffect(() => {
@@ -74,16 +73,14 @@ useEffect(() => {
       const newMatchingNavne = names.filter(name => namesArray.includes(name));
       setmatchNavne(newMatchingNavne);
       setmodificeeredeNavne(newMatchingNavne);
+      setmodificeeredeNavneOrgi(newMatchingNavne);
       if (sessionStorage.getItem('uploadCalled') === null) {
         uploadMatches(newMatchingNavne);
         sessionStorage.setItem('uploadCalled', 'true');
       }
     }
   }, [names, namesArray]);
-  
-  
-  
-  
+
   async function uploadMatches(matchNavne: string[]) {
     for (let i = 0; i < matchNavne.length; i++) {
       try {
@@ -197,7 +194,7 @@ function handleSearch() {
   if (inputVærdi === "") {
     handleChange();
   } else {
-    let filteredNames = modificeeredeNavne.filter(name => name.toLowerCase().startsWith(inputVærdi.toLowerCase()));
+    let filteredNames = modificeeredeNavneOrgi.filter(name => name.toLowerCase().startsWith(inputVærdi.toLowerCase()));
     setmodificeeredeNavne(filteredNames);
   }
 }

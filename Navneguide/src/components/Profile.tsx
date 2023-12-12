@@ -7,6 +7,7 @@ function Profile() {
   const [partnerEmail, setPartnerEmail] = useState<string | null>(null);
   const [linked, setLinked] = useState<boolean>(false);
   const [allNames, setAllNames] = useState<string[]>([]);
+  const [allNamesOrgi, setAllNamesOrgi] = useState<string[]>([]);
   const [isNameDeleted, setIsNameDeleted] = useState<boolean>(false);
   const [isDetailUpdated, setIsDetailUpdated] = useState<boolean>(false);
   const namesList = document.querySelectorAll('.list-container .list li');
@@ -61,6 +62,7 @@ function Profile() {
         const data: NameObject[] = await response.json();
         const namesArray = data.map(item => item.name);
         setAllNames(namesArray);
+        setAllNamesOrgi(namesArray);
         
       } else {
         console.error('Failed to fetch data');
@@ -214,7 +216,7 @@ function Profile() {
       if (inputVærdi === "") {
         fetchDataAndSetNames();
       } else {
-        let filteredNames = allNames.filter(name => name.toLowerCase().startsWith(inputVærdi.toLowerCase()));
+        let filteredNames = allNamesOrgi.filter(name => name.toLowerCase().startsWith(inputVærdi.toLowerCase()));
         setAllNames(filteredNames);
       }
     }
