@@ -8,6 +8,7 @@ function Profile() {
   const [linked, setLinked] = useState<boolean>(false);
   const [allNames, setAllNames] = useState<string[]>([]);
   const [isNameDeleted, setIsNameDeleted] = useState<boolean>(false);
+  const [isDetailUpdated, setIsDetailUpdated] = useState<boolean>(false);
   const namesList = document.querySelectorAll('.list-container .list li');
   const namesArray = Array.from(namesList).map(li => li.textContent);
   sessionStorage.setItem('namesArray', JSON.stringify(namesArray));
@@ -60,7 +61,7 @@ function Profile() {
         const data: NameObject[] = await response.json();
         const namesArray = data.map(item => item.name);
         setAllNames(namesArray);
-        console.log(allNames);
+        
       } else {
         console.error('Failed to fetch data');
       }
@@ -88,8 +89,6 @@ function Profile() {
       });
   
       if (response.ok) {
-        
-        console.log('Name added successfully');
         getNamesByEmail();
       } else {
         console.error('Failed to fetch data');
@@ -123,7 +122,6 @@ function Profile() {
       });
 
       if (response.ok) {
-        console.log('Partner linked successfully');
         setPartnerEmail(partnerEmail); 
         setLinked(true);
         sessionStorage.setItem('partnerEmail', partnerEmail);
@@ -160,7 +158,7 @@ function Profile() {
         if (response.ok) {
           email = partnerEmail; 
           sessionStorage.setItem('submittedEmail', partnerEmail);
-          console.log('updated email, to ' + partnerEmail);
+          isupdated();
         }
       }
       
@@ -175,12 +173,19 @@ function Profile() {
           body: JSON.stringify({ password: password }),
         });
         if (response.ok) {
-          console.log('updated password');
+          isupdated();
         }
       }
     } catch (error) {
       console.log(error);
     }
+  }
+  function isupdated()
+  {
+    setIsDetailUpdated(true)
+    setTimeout(() => {
+      setIsDetailUpdated(false);
+    }, 2000);
   }
   
 
@@ -225,9 +230,10 @@ function Profile() {
           <label htmlFor="email">Adgangskode:</label>
           <input type="password" id="password" name="password" />
         </div>
-        <button type='button' onClick={changePasOrEmail} id='submit-button'>update bruger info</button>  
+        <button type='button'  onClick={changePasOrEmail} id='submit-button' 
+        style={isDetailUpdated ? {boxShadow: '0px 0px 10px 3px green'} : {}}>update bruger info
+        </button>  
       </form>
-
     <div className='add-to-list'>
           <div className="container">
         <br/>
@@ -239,7 +245,6 @@ function Profile() {
                               <i className="fas fa-search h4 text-body"></i>
                           </div>
                           <div className="col">
-                            
                               <input className="form-control form-control-lg form-control-borderless" type="search" placeholder="Søg efter navne" onChange={handleSearch} id='seach-input'></input>
                           </div>
                           
