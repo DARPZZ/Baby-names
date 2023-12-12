@@ -95,10 +95,6 @@ useEffect(() => {
             date: new Date() 
           }),
         });
-  
-        if (response.ok) {
-          console.log("all good");
-        }
       } catch (error) {
         console.error('Error:', error);
       }
