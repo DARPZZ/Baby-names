@@ -58,9 +58,6 @@
 }
 #submit-button{
   width: 92%;
-  border: none;
-  background-color: #42b72a;
-color: white;
 }
 
 .list li:hover {
@@ -77,16 +74,10 @@ color: white;
 .add-more button {
   position: relative;
   width: 91%;
-  background-color: #42b72a;
-  color: #fff; 
-  border: none; 
   cursor: pointer; 
   transition: background-color 0.3s ease-in-out; 
 }
 
-.add-more button:hover {
-  background-color: #36a420; 
-}
 
 .add-more input {
   position: relative;

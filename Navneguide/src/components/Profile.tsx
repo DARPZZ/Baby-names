@@ -7,13 +7,10 @@ function Profile() {
   const [partnerEmail, setPartnerEmail] = useState<string | null>(null);
   const [linked, setLinked] = useState<boolean>(false);
   const [allNames, setAllNames] = useState<string[]>([]);
+  const [isNameDeleted, setIsNameDeleted] = useState<boolean>(false);
   const namesList = document.querySelectorAll('.list-container .list li');
   const namesArray = Array.from(namesList).map(li => li.textContent);
   sessionStorage.setItem('namesArray', JSON.stringify(namesArray));
-
-
-  
- 
 
   async function getNamesByEmail()
     {
@@ -72,7 +69,6 @@ function Profile() {
     }
   }
   
-  // Fetch data when the page loads
   useEffect(() => {
     fetchDataAndSetNames();
   }, []);
@@ -129,7 +125,7 @@ function Profile() {
       if (response.ok) {
         console.log('Partner linked successfully');
         setPartnerEmail(partnerEmail); 
-        setLinked(true); // fyre css event
+        setLinked(true);
         sessionStorage.setItem('partnerEmail', partnerEmail);
         setTimeout(() => {
           setLinked(false);
@@ -201,6 +197,8 @@ function Profile() {
       });
 
       if (response.ok) {
+        setIsNameDeleted(true);
+        setTimeout(() => setIsNameDeleted(false), 2000);
         getNamesByEmail();
       }
   }
@@ -276,8 +274,6 @@ function Profile() {
     </ul>
   )}
 </div>
-
-
       <div className='add-more'>
         <input
           id='ral'
@@ -290,13 +286,12 @@ function Profile() {
         </button>
       </div>
       <div className='remove'>
-       <button id='remove-button' onClick={removeAllnames}>
+      <button id='remove-button' onClick={removeAllnames} style={isNameDeleted ? {boxShadow: '0px 0px 10px 3px green'} : {}}>
         Slet alle dine navne
-       </button>
+      </button>
       </div>
       
     </div>
   );
 }
-
 export default Profile;
