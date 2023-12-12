@@ -119,7 +119,7 @@ let girlsNames : Set<string> = new Set();
 let unisexNames : Set<string> = new Set();
 let internationalNames : Set<string> = new Set();
 
-async function getDiffrentApi(mode : string, firstEndPoint : string) {
+async function getNames(mode : string, firstEndPoint : string) {
   const fetchData = async () => {
     try {
       const response = await fetch(`${apiCall}${mode}/${firstEndPoint}`, {
@@ -173,16 +173,16 @@ function handleChange() {
   }
   const promises = [];
   if (mandCheck.checked) {
-    promises.push(getDiffrentApi(gen, "boy"));
+    promises.push(getNames(gen, "boy"));
   }
   if (kvindCheck.checked) {
-    promises.push(getDiffrentApi(gen, "girl"));
+    promises.push(getNames(gen, "girl"));
   }
   if (unisexCheck.checked) {
-    promises.push(getDiffrentApi(gen, "uni"));
+    promises.push(getNames(gen, "uni"));
   }
   if(internationalCheck.checked) {
-    promises.push(getDiffrentApi(inter,"true"));
+    promises.push(getNames(inter,"true"));
   }
   Promise.all(promises).then(() => {
     setmodificeeredeNavne(Array.from(new Set([...boysNames, ...girlsNames, ...unisexNames,...internationalNames])));
@@ -191,7 +191,6 @@ function handleChange() {
 }
 
 
-   
     function handleSearch() {
       let inputElement = document.getElementById("search-input") as HTMLInputElement;
       let inputVærdi = inputElement.value;
