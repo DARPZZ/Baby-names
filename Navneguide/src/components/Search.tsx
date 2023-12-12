@@ -191,16 +191,17 @@ function handleChange() {
 }
 
 
-    function handleSearch() {
-      let inputElement = document.getElementById("search-input") as HTMLInputElement;
-      let inputVærdi = inputElement.value;
-      if (modificeeredeNavne.includes(inputVærdi)) {
-       
-        setmodificeeredeNavne([inputVærdi]);
-      }else if (inputVærdi === ""){
-        handleChange();
-      } 
-    }   
+function handleSearch() {
+  let inputElement = document.getElementById("search-input") as HTMLInputElement;
+  let inputVærdi = inputElement.value;
+  if (inputVærdi === "") {
+    handleChange();
+  } else {
+    let filteredNames = modificeeredeNavne.filter(name => name.toLowerCase().startsWith(inputVærdi.toLowerCase()));
+    setmodificeeredeNavne(filteredNames);
+  }
+}
+
   
 
     return (

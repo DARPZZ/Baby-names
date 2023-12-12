@@ -211,12 +211,14 @@ function Profile() {
     function handleSearch() {
       let inputElement = document.getElementById("seach-input") as HTMLInputElement;
       var inputVærdi = inputElement.value;
-      if (allNames.includes(inputVærdi)) {
-        setAllNames([inputVærdi]);
-      }else if (inputVærdi === ""){
-       fetchDataAndSetNames();
-      } 
-    }   
+      if (inputVærdi === "") {
+        fetchDataAndSetNames();
+      } else {
+        let filteredNames = allNames.filter(name => name.toLowerCase().startsWith(inputVærdi.toLowerCase()));
+        setAllNames(filteredNames);
+      }
+    }
+  
  
 
   return (
