@@ -290,7 +290,6 @@ function Profile() {
         Slet alle dine navne
       </button>
       </div>
-      
     </div>
   );
 }
