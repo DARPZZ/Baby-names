@@ -16,7 +16,7 @@ function PopularNames() {
   const [namesData, setNamesData] = useState<NameInfo[]>([]);
 
   useEffect(() => {
-    const url: string = `https://www.navneguiden.dk/toplister/navne-til-nyfodte/${selectedYear}`;
+    const url: string = `http://localhost:3000/proxy/${selectedYear}`;
 
     const fetchData = async () => {
       try {
