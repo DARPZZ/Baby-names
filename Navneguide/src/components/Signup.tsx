@@ -13,11 +13,11 @@ function Signup() {
 
   const checkPasswordStrength = (password : string) => {
     if (password.length < 6) {
-      setPasswordStrength('Weak');
+      setPasswordStrength('Svag');
     } else if (password.length < 10) {
       setPasswordStrength('Moderate');
     } else {
-      setPasswordStrength('Strong');
+      setPasswordStrength('Stærk');
     }
   };
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -74,7 +74,7 @@ function Signup() {
             <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} />
             {passwordStrength && (
               <div className="password-strength">
-                Password Strength: {passwordStrength}
+                Adgangskode styrke: {passwordStrength}
               </div>
             )}
           </div>
